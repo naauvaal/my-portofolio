@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nauval Dewangga Putra | Portfolio</title>
     
-    <!-- Tipografi Modern & Profesional: Inter -->
+    <!-- Tipografi Modern: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome untuk Ikon -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- AOS Animation CSS -->
@@ -20,16 +20,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class', /* Mengaktifkan fitur dark mode manual */
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['"Inter"', 'sans-serif'],
                     },
                     colors: {
-                        brand: '#111827', /* Abu-abu sangat gelap hampir hitam */
-                        accent: '#2563eb', /* Biru profesional */
-                        surface: '#ffffff',
-                        background: '#f8fafc',
+                        brand: '#2563eb',
+                        darkBg: '#0f172a', /* Latar belakang dark mode */
+                        darkCard: '#1e293b',
                     }
                 }
             }
@@ -38,24 +38,32 @@
     
     <style>
         body { 
-            background-color: #fafafa; 
-            color: #111827; 
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
         
-        /* Pola Latar Belakang Garis Halus (Monokrom) */
+        /* Pola Latar Belakang Garis Halus */
         .bg-grid-pattern {
             background-image: 
                 linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
             background-size: 40px 40px;
         }
+        .dark .bg-grid-pattern {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
 
         /* Navigasi Bersih */
         .nav-blur {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid #f1f5f9;
+        }
+        .dark .nav-blur {
+            background: rgba(15, 23, 42, 0.85);
+            border-bottom: 1px solid #1e293b;
         }
 
         /* Kartu Minimalis */
@@ -63,59 +71,81 @@
             background: #ffffff;
             border: 1px solid #e2e8f0;
             border-radius: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dark .clean-card {
+            background: #1e293b;
+            border-color: #334155;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
         }
         .clean-card:hover {
             border-color: #cbd5e1;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
             transform: translateY(-4px);
         }
-
-        /* Efek Tombol Halus */
-        .btn-primary {
-            background-color: #111827;
-            color: #ffffff;
-            transition: all 0.3s ease;
+        .dark .clean-card:hover {
+            border-color: #475569;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
         }
-        .btn-primary:hover {
-            background-color: #2563eb;
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
-            transform: translateY(-2px);
+
+        /* Efek Cahaya Belakang (Light/Dark) */
+        .glow-bg {
+            background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
+        }
+        .dark .glow-bg {
+            background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, rgba(15,23,42,0) 70%);
         }
     </style>
 </head>
-<body class="bg-grid-pattern selection:bg-accent selection:text-white relative">
+<body class="bg-[#fafafa] dark:bg-darkBg text-slate-900 dark:text-slate-100 bg-grid-pattern selection:bg-brand selection:text-white">
 
-    <!-- Efek Cahaya Halus Statis di Latar Belakang (Hanya 1 warna cerah) -->
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-white rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+    <!-- Efek Cahaya Halus di Tengah -->
+    <div class="glow-bg fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] blur-[80px] -z-10 pointer-events-none transition-all duration-700"></div>
 
     <!-- Navigasi -->
     <nav class="fixed w-full z-50 nav-blur top-0 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-extrabold tracking-tight text-brand flex items-center gap-2">
-                <div class="w-8 h-8 bg-brand text-white rounded-lg flex items-center justify-center text-sm">N</div>
+            
+            <!-- Logo -->
+            <a href="#" class="text-xl font-extrabold tracking-tight flex items-center gap-2 text-slate-900 dark:text-white transition-colors">
+                <div class="w-8 h-8 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg flex items-center justify-center text-sm transition-colors">N</div>
                 Nauval.
             </a>
             
-            <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-500">
-                <a href="#beranda" class="hover:text-brand transition-colors">Beranda</a>
-                <a href="#riwayat" class="hover:text-brand transition-colors">Riwayat</a>
-                <a href="#karya" class="hover:text-brand transition-colors">Portofolio</a>
-                <a href="#kontak" class="hover:text-brand transition-colors">Kontak</a>
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-500 dark:text-slate-400">
+                <a href="#beranda" class="hover:text-slate-900 dark:hover:text-white transition-colors" data-i18n="nav_home">Beranda</a>
+                <a href="#riwayat" class="hover:text-slate-900 dark:hover:text-white transition-colors" data-i18n="nav_history">Riwayat</a>
+                <a href="#karya" class="hover:text-slate-900 dark:hover:text-white transition-colors" data-i18n="nav_portfolio">Portofolio</a>
+                <a href="#kontak" class="hover:text-slate-900 dark:hover:text-white transition-colors" data-i18n="nav_contact">Kontak</a>
             </div>
 
-            <button id="mobile-menu-btn" class="md:hidden text-brand focus:outline-none">
-                <i class="fa-solid fa-bars-staggered text-xl"></i>
-            </button>
+            <!-- Kontrol Tema & Bahasa -->
+            <div class="flex items-center gap-4">
+                <!-- Tombol Bahasa -->
+                <button id="lang-toggle" class="text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-colors px-2 py-1 border border-slate-300 dark:border-slate-600 rounded">
+                    ID / EN
+                </button>
+                
+                <!-- Tombol Dark Mode -->
+                <button id="theme-toggle" class="text-lg text-slate-600 dark:text-slate-300 hover:text-brand dark:hover:text-brand transition-colors w-8 h-8 flex justify-center items-center">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <!-- Tombol Menu Mobile -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-900 dark:text-white focus:outline-none ml-2">
+                    <i class="fa-solid fa-bars-staggered text-xl"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Menu Mobile -->
-        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white border-b border-slate-100 flex flex-col px-6 py-6 space-y-4 shadow-xl">
-            <a href="#beranda" class="mobile-link text-slate-800 font-semibold hover:text-accent">Beranda</a>
-            <a href="#riwayat" class="mobile-link text-slate-800 font-semibold hover:text-accent">Riwayat</a>
-            <a href="#karya" class="mobile-link text-slate-800 font-semibold hover:text-accent">Portofolio</a>
-            <a href="#kontak" class="mobile-link text-slate-800 font-semibold hover:text-accent">Kontak</a>
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex flex-col px-6 py-6 space-y-4 shadow-xl transition-colors">
+            <a href="#beranda" class="mobile-link text-slate-800 dark:text-slate-200 font-semibold hover:text-brand" data-i18n="nav_home">Beranda</a>
+            <a href="#riwayat" class="mobile-link text-slate-800 dark:text-slate-200 font-semibold hover:text-brand" data-i18n="nav_history">Riwayat</a>
+            <a href="#karya" class="mobile-link text-slate-800 dark:text-slate-200 font-semibold hover:text-brand" data-i18n="nav_portfolio">Portofolio</a>
+            <a href="#kontak" class="mobile-link text-slate-800 dark:text-slate-200 font-semibold hover:text-brand" data-i18n="nav_contact">Kontak</a>
         </div>
     </nav>
 
@@ -125,27 +155,27 @@
             
             <!-- Teks -->
             <div class="order-2 lg:order-1 text-center lg:text-left z-10" data-aos="fade-up" data-aos-duration="1000">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 text-xs font-semibold mb-8 shadow-sm">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold mb-8 shadow-sm transition-colors">
                     <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    Available for Work
+                    <span data-i18n="hero_badge">Tersedia untuk Kolaborasi</span>
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl font-extrabold text-brand tracking-tight leading-[1.1] mb-6">
-                    Membangun <br class="hidden md:block">
-                    Solusi Digital <br class="hidden md:block">
-                    <span class="text-accent">Yang Efisien.</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
+                    <span data-i18n="hero_title_1">Membangun</span> <br class="hidden md:block">
+                    <span data-i18n="hero_title_2">Solusi Digital</span> <br class="hidden md:block">
+                    <span class="text-brand" data-i18n="hero_title_3">Yang Efisien.</span>
                 </h1>
                 
-                <p class="text-lg text-slate-500 mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                    Halo, saya <strong class="text-brand">Nauval Dewangga Putra</strong>. Developer & Operator Layanan Digital di Surabaya. Memadukan desain antarmuka yang bersih dengan fondasi sistem yang cerdas.
+                <p class="text-lg text-slate-500 dark:text-slate-400 mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed transition-colors">
+                    <span data-i18n="hero_desc_1">Halo, saya</span> <strong class="text-slate-900 dark:text-white">Nauval Dewangga Putra</strong>. <span data-i18n="hero_desc_2">Developer & Operator Layanan Digital di Surabaya. Memadukan desain antarmuka yang bersih dengan fondasi sistem yang cerdas.</span>
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <a href="#karya" class="btn-primary px-8 py-3.5 rounded-xl font-medium flex items-center justify-center gap-2">
-                        Eksplorasi Karya <i class="fa-solid fa-arrow-right text-sm"></i>
+                    <a href="#karya" class="bg-slate-900 dark:bg-brand text-white px-8 py-3.5 rounded-xl font-medium hover:bg-brand dark:hover:bg-blue-500 transition-all flex items-center justify-center gap-2">
+                        <span data-i18n="btn_explore">Eksplorasi Karya</span> <i class="fa-solid fa-arrow-right text-sm"></i>
                     </a>
-                    <a href="#kontak" class="px-8 py-3.5 rounded-xl bg-white border border-slate-200 text-slate-700 font-medium hover:bg-slate-50 hover:border-slate-300 transition-all text-center">
-                        Hubungi Saya
+                    <a href="#kontak" class="px-8 py-3.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-medium hover:bg-slate-50 dark:hover:bg-slate-700 transition-all text-center">
+                        <span data-i18n="btn_contact">Hubungi Saya</span>
                     </a>
                 </div>
             </div>
@@ -153,9 +183,8 @@
             <!-- Foto Hero -->
             <div class="order-1 lg:order-2 flex justify-center lg:justify-end z-10" data-aos="fade-left" data-aos-duration="1200">
                 <div class="relative w-72 h-72 md:w-96 md:h-96">
-                    <!-- Bingkai estetik minimalis -->
-                    <div class="absolute inset-0 border border-slate-200 rounded-full translate-x-4 translate-y-4"></div>
-                    <div class="absolute inset-0 bg-white rounded-full border border-slate-100 p-2 shadow-xl z-10">
+                    <div class="absolute inset-0 border border-slate-200 dark:border-slate-700 rounded-full translate-x-4 translate-y-4 transition-colors"></div>
+                    <div class="absolute inset-0 bg-white dark:bg-slate-800 rounded-full border border-slate-100 dark:border-slate-700 p-2 shadow-xl z-10 transition-colors">
                         <img src="images/foto-profil.jpg" alt="Nauval Dewangga" class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-700">
                     </div>
                 </div>
@@ -165,12 +194,12 @@
     </section>
 
     <!-- Riwayat Section -->
-    <section id="riwayat" class="py-24 px-6 relative bg-white border-y border-slate-100">
+    <section id="riwayat" class="py-24 px-6 relative bg-white dark:bg-darkBg border-y border-slate-100 dark:border-slate-800 transition-colors">
         <div class="max-w-6xl mx-auto">
             
             <div class="mb-16 md:text-center" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-brand tracking-tight mb-4">Rekam Jejak Profesional</h2>
-                <p class="text-slate-500 max-w-2xl md:mx-auto">Perjalanan karir dan fondasi edukasi yang membentuk keahlian saya.</p>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4" data-i18n="history_title">Rekam Jejak Profesional</h2>
+                <p class="text-slate-500 dark:text-slate-400 max-w-2xl md:mx-auto" data-i18n="history_subtitle">Perjalanan karir dan fondasi edukasi yang membentuk keahlian saya.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -178,33 +207,33 @@
                 <!-- Pengalaman -->
                 <div class="clean-card p-8 md:p-10" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-slate-100 text-brand rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-briefcase"></i></div>
-                        <h3 class="text-2xl font-bold text-brand">Pengalaman Kerja</h3>
+                        <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white rounded-xl flex items-center justify-center text-xl transition-colors"><i class="fa-solid fa-briefcase"></i></div>
+                        <h3 class="text-2xl font-bold" data-i18n="exp_title">Pengalaman Kerja</h3>
                     </div>
                     
-                    <div class="space-y-8 relative before:absolute before:inset-0 before:ml-2 before:-translate-x-px before:h-full before:w-0.5 before:bg-slate-200">
+                    <div class="space-y-8 relative before:absolute before:inset-0 before:ml-2 before:-translate-x-px before:h-full before:w-0.5 before:bg-slate-200 dark:before:bg-slate-700">
                         
                         <div class="relative pl-8 group">
-                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-4 border-white bg-accent z-10 group-hover:scale-125 transition-transform"></div>
-                            <span class="text-slate-500 text-xs font-bold tracking-wider uppercase mb-1 block">2024 - Sekarang</span>
-                            <h4 class="text-lg font-bold text-brand">Founder & Developer</h4>
-                            <p class="text-accent font-medium mb-2 text-sm">Envel Store</p>
-                            <p class="text-slate-600 text-sm leading-relaxed">Mengembangkan dan mengelola ekosistem layanan digital. Berpengalaman dalam merancang panel admin kustom serta mengotomatisasi transaksi menggunakan Telegram Bot.</p>
+                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-4 border-white dark:border-darkCard bg-brand z-10 transition-transform group-hover:scale-125"></div>
+                            <span class="text-slate-500 dark:text-slate-400 text-xs font-bold tracking-wider uppercase mb-1 block" data-i18n="exp_date_1">2024 - Sekarang</span>
+                            <h4 class="text-lg font-bold" data-i18n="exp_role_1">Founder & Developer</h4>
+                            <p class="text-brand font-medium mb-2 text-sm">Envel Store</p>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="exp_desc_1">Mengembangkan dan mengelola ekosistem layanan digital. Berpengalaman dalam merancang panel admin kustom serta mengotomatisasi transaksi menggunakan Telegram Bot.</p>
                         </div>
                         
                         <div class="relative pl-8 group">
-                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-4 border-white bg-slate-300 z-10 group-hover:scale-125 transition-transform"></div>
-                            <span class="text-slate-500 text-xs font-bold tracking-wider uppercase mb-1 block">2020 - Sekarang</span>
-                            <h4 class="text-lg font-bold text-brand">Staff Administrasi</h4>
-                            <p class="text-slate-800 font-medium mb-2 text-sm">DPC PDI Perjuangan Kota Surabaya</p>
-                            <p class="text-slate-600 text-sm leading-relaxed">Mengelola tata usaha, surat menyurat, arsip, serta manajemen database. Menyusun laporan kegiatan administratif dan mengoordinasikan operasional harian.</p>
+                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-4 border-white dark:border-darkCard bg-slate-300 dark:bg-slate-600 z-10 transition-transform group-hover:scale-125"></div>
+                            <span class="text-slate-500 dark:text-slate-400 text-xs font-bold tracking-wider uppercase mb-1 block" data-i18n="exp_date_2">2020 - Sekarang</span>
+                            <h4 class="text-lg font-bold" data-i18n="exp_role_2">Staff Administrasi</h4>
+                            <p class="text-slate-800 dark:text-slate-200 font-medium mb-2 text-sm">DPC PDI Perjuangan Kota Surabaya</p>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="exp_desc_2">Mengelola tata usaha, surat menyurat, arsip, serta manajemen database. Menyusun laporan kegiatan administratif dan mengoordinasikan operasional harian.</p>
                         </div>
 
                         <div class="relative pl-8 group">
-                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-4 border-white bg-slate-300 z-10 group-hover:scale-125 transition-transform"></div>
-                            <span class="text-slate-500 text-xs font-bold tracking-wider uppercase mb-1 block">Magang (3 Bulan)</span>
-                            <h4 class="text-lg font-bold text-brand">Staf Produksi / Kreatif</h4>
-                            <p class="text-slate-800 font-medium text-sm">BBSTV Surabaya</p>
+                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-4 border-white dark:border-darkCard bg-slate-300 dark:bg-slate-600 z-10 transition-transform group-hover:scale-125"></div>
+                            <span class="text-slate-500 dark:text-slate-400 text-xs font-bold tracking-wider uppercase mb-1 block" data-i18n="exp_date_3">Magang (3 Bulan)</span>
+                            <h4 class="text-lg font-bold" data-i18n="exp_role_3">Staf Produksi / Kreatif</h4>
+                            <p class="text-slate-800 dark:text-slate-200 font-medium text-sm">BBSTV Surabaya</p>
                         </div>
                     </div>
                 </div>
@@ -212,30 +241,30 @@
                 <!-- Pendidikan -->
                 <div class="clean-card p-8 md:p-10" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-slate-100 text-brand rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <h3 class="text-2xl font-bold text-brand">Edukasi</h3>
+                        <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white rounded-xl flex items-center justify-center text-xl transition-colors"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h3 class="text-2xl font-bold" data-i18n="edu_title">Edukasi</h3>
                     </div>
                     
                     <div class="space-y-6">
-                        <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100 group hover:border-slate-300 transition-colors">
-                            <span class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2 block">2022 - Sekarang</span>
-                            <h4 class="text-base font-bold text-brand">Universitas Terbuka Surabaya</h4>
-                            <p class="text-accent font-medium text-sm mt-1">Jurusan Ilmu Komunikasi</p>
-                            <p class="text-slate-500 text-sm mt-2 leading-relaxed">Mempelajari praktik komunikasi massa, public relations, strategi media digital, serta komunikasi bisnis organisasi.</p>
+                        <div class="p-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 transition-colors">
+                            <span class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2 block" data-i18n="edu_date_1">2022 - Sekarang</span>
+                            <h4 class="text-base font-bold">Universitas Terbuka Surabaya</h4>
+                            <p class="text-brand font-medium text-sm mt-1" data-i18n="edu_major_1">Jurusan Ilmu Komunikasi</p>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mt-2 leading-relaxed" data-i18n="edu_desc_1">Mempelajari praktik komunikasi massa, public relations, strategi media digital, serta komunikasi bisnis organisasi.</p>
                         </div>
-                        <div class="p-5 border border-slate-100 rounded-2xl group hover:border-slate-300 transition-colors">
+                        <div class="p-5 border border-slate-100 dark:border-slate-700 rounded-2xl transition-colors">
                             <span class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-2 block">2016 - 2019</span>
-                            <h4 class="text-base font-bold text-brand">SMK Negeri 12 Surabaya</h4>
-                            <p class="text-slate-700 font-medium text-sm mt-1">Jurusan Multimedia</p>
-                            <p class="text-slate-500 text-sm mt-2 leading-relaxed">Mempelajari dasar desain grafis, tipografi, editing video/audio, animasi, serta produksi konten digital visual.</p>
+                            <h4 class="text-base font-bold">SMK Negeri 12 Surabaya</h4>
+                            <p class="text-slate-700 dark:text-slate-300 font-medium text-sm mt-1" data-i18n="edu_major_2">Jurusan Multimedia</p>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mt-2 leading-relaxed" data-i18n="edu_desc_2">Mempelajari dasar desain grafis, tipografi, editing video/audio, animasi, serta produksi konten digital visual.</p>
                         </div>
-                        <div class="p-5 border border-slate-100 rounded-2xl hover:border-slate-300 transition-colors">
+                        <div class="p-5 border border-slate-100 dark:border-slate-700 rounded-2xl transition-colors">
                             <span class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1 block">2013 - 2016</span>
-                            <h4 class="text-base font-bold text-brand">SMP Negeri 29 Surabaya</h4>
+                            <h4 class="text-base font-bold">SMP Negeri 29 Surabaya</h4>
                         </div>
-                        <div class="p-5 border border-slate-100 rounded-2xl hover:border-slate-300 transition-colors">
+                        <div class="p-5 border border-slate-100 dark:border-slate-700 rounded-2xl transition-colors">
                             <span class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1 block">2007 - 2013</span>
-                            <h4 class="text-base font-bold text-brand">SDN Kutisari III Surabaya</h4>
+                            <h4 class="text-base font-bold">SDN Kutisari III Surabaya</h4>
                         </div>
                     </div>
                 </div>
@@ -249,75 +278,69 @@
         <div class="max-w-6xl mx-auto">
             
             <div class="mb-16 md:text-center" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-brand tracking-tight mb-4">Eksplorasi Karya</h2>
-                <p class="text-slate-500 max-w-2xl md:mx-auto">Implementasi keahlian teknis dan kreativitas desain ke dalam solusi digital.</p>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4" data-i18n="port_title">Eksplorasi Karya</h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-2" data-i18n="port_subtitle">Implementasi keahlian teknis dan kreativitas desain ke dalam solusi digital.</p>
             </div>
             
             <!-- KATEGORI: WEB DEVELOPMENT -->
             <div class="mb-20">
-                <h3 class="text-xl font-bold text-brand mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-code text-sm text-slate-400"></i> Web & System Development
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-code text-sm text-slate-400"></i> <span data-i18n="cat_web">Web & System Development</span>
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     
-                    <!-- Web Item 1: Envel Store -->
+                    <!-- Web 1 -->
                     <div class="clean-card overflow-hidden flex flex-col group" data-aos="fade-up" data-aos-delay="100">
-                        <a href="https://script.google.com/macros/s/AKfycbz-Wt5G1mBaaAahCQ9-DX9EJA69XiuA2RikCtLSSOjKFTwK7Pv9d9-TEbvwx7U-Y-yr/exec" target="_blank" class="block aspect-[16/10] bg-slate-100 relative overflow-hidden border-b border-slate-200">
-                            <!-- Overlay Hover -->
-                            <div class="absolute inset-0 flex items-center justify-center bg-brand/0 group-hover:bg-brand/40 transition-all z-10">
-                                <span class="opacity-0 group-hover:opacity-100 bg-white text-brand text-xs font-bold px-4 py-2 rounded-full shadow-lg transition-all transform translate-y-2 group-hover:translate-y-0 flex items-center gap-2">
-                                    Visit Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <a href="https://script.google.com/macros/s/AKfycbz-Wt5G1mBaaAahCQ9-DX9EJA69XiuA2RikCtLSSOjKFTwK7Pv9d9-TEbvwx7U-Y-yr/exec" target="_blank" class="block aspect-[16/10] bg-slate-100 dark:bg-slate-800 relative overflow-hidden border-b border-slate-200 dark:border-slate-700">
+                            <div class="absolute inset-0 flex items-center justify-center bg-slate-900/0 group-hover:bg-slate-900/40 transition-all z-10">
+                                <span class="opacity-0 group-hover:opacity-100 bg-white text-slate-900 text-xs font-bold px-4 py-2 rounded-full shadow-lg transition-all transform translate-y-2 group-hover:translate-y-0 flex items-center gap-2">
+                                    <span data-i18n="visit_site">Visit Site</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </span>
                             </div>
-                            <!-- Gambar Envel Store -->
                             <img src="images/foto-envelstore.jpg" alt="Envel Store" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         </a>
                         <div class="p-6 flex-1 flex flex-col">
-                            <h4 class="font-bold text-brand mb-2">Envel Store</h4>
-                            <p class="text-sm text-slate-500 leading-relaxed mb-4 flex-1">Platform layanan digital dengan panel admin kustom, pengelolaan katalog produk, dan otomatisasi pesanan berbasis Google Apps Script.</p>
-                            <a href="https://script.google.com/macros/s/AKfycbz-Wt5G1mBaaAahCQ9-DX9EJA69XiuA2RikCtLSSOjKFTwK7Pv9d9-TEbvwx7U-Y-yr/exec" target="_blank" class="text-sm font-semibold text-accent hover:text-brand transition-colors flex items-center w-fit">
+                            <h4 class="font-bold mb-2">Envel Store</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4 flex-1" data-i18n="web_desc_1">Platform layanan digital dengan panel admin kustom, pengelolaan katalog produk, dan otomatisasi pesanan berbasis Google Apps Script.</p>
+                            <a href="https://script.google.com/macros/s/AKfycbz-Wt5G1mBaaAahCQ9-DX9EJA69XiuA2RikCtLSSOjKFTwK7Pv9d9-TEbvwx7U-Y-yr/exec" target="_blank" class="text-sm font-semibold text-brand hover:text-slate-500 dark:hover:text-white transition-colors flex items-center w-fit">
                                 Live Preview <i class="fa-solid fa-arrow-right ml-1.5 text-xs group-hover:translate-x-1 transition-transform"></i>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Web Item 2: Layanan KTA PDI -->
+                    <!-- Web 2 -->
                     <div class="clean-card overflow-hidden flex flex-col group" data-aos="fade-up" data-aos-delay="200">
-                        <a href="https://script.google.com/macros/s/AKfycbzvhqSUvh8R_gJU-KiDpghNztyGuZSrGaZyDgThxke2Lpezf8VqeYzOIQM0aJz399Wm/exec" target="_blank" class="block aspect-[16/10] bg-slate-100 relative overflow-hidden border-b border-slate-200">
-                            <!-- Overlay Hover -->
-                            <div class="absolute inset-0 flex items-center justify-center bg-brand/0 group-hover:bg-brand/40 transition-all z-10">
-                                <span class="opacity-0 group-hover:opacity-100 bg-white text-brand text-xs font-bold px-4 py-2 rounded-full shadow-lg transition-all transform translate-y-2 group-hover:translate-y-0 flex items-center gap-2">
-                                    Visit Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <a href="https://script.google.com/macros/s/AKfycbzvhqSUvh8R_gJU-KiDpghNztyGuZSrGaZyDgThxke2Lpezf8VqeYzOIQM0aJz399Wm/exec" target="_blank" class="block aspect-[16/10] bg-slate-100 dark:bg-slate-800 relative overflow-hidden border-b border-slate-200 dark:border-slate-700">
+                            <div class="absolute inset-0 flex items-center justify-center bg-slate-900/0 group-hover:bg-slate-900/40 transition-all z-10">
+                                <span class="opacity-0 group-hover:opacity-100 bg-white text-slate-900 text-xs font-bold px-4 py-2 rounded-full shadow-lg transition-all transform translate-y-2 group-hover:translate-y-0 flex items-center gap-2">
+                                    <span data-i18n="visit_site">Visit Site</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </span>
                             </div>
-                            <!-- Gambar Layanan KTA -->
                             <img src="images/foto-pendaftarankta.jpg" alt="Layanan KTA" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         </a>
                         <div class="p-6 flex-1 flex flex-col">
-                            <h4 class="font-bold text-brand mb-2">Layanan KTA Terpadu</h4>
-                            <p class="text-sm text-slate-500 leading-relaxed mb-4 flex-1">Sistem informasi untuk memfasilitasi pendaftaran anggota, cek status keanggotaan, dan pelacakan status cetak Kartu Tanda Anggota.</p>
-                            <a href="https://script.google.com/macros/s/AKfycbzvhqSUvh8R_gJU-KiDpghNztyGuZSrGaZyDgThxke2Lpezf8VqeYzOIQM0aJz399Wm/exec" target="_blank" class="text-sm font-semibold text-accent hover:text-brand transition-colors flex items-center w-fit">
+                            <h4 class="font-bold mb-2" data-i18n="web_title_2">Layanan KTA Terpadu</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4 flex-1" data-i18n="web_desc_2">Sistem informasi untuk memfasilitasi pendaftaran anggota, cek status keanggotaan, dan pelacakan status cetak Kartu Tanda Anggota.</p>
+                            <a href="https://script.google.com/macros/s/AKfycbzvhqSUvh8R_gJU-KiDpghNztyGuZSrGaZyDgThxke2Lpezf8VqeYzOIQM0aJz399Wm/exec" target="_blank" class="text-sm font-semibold text-brand hover:text-slate-500 dark:hover:text-white transition-colors flex items-center w-fit">
                                 Live Preview <i class="fa-solid fa-arrow-right ml-1.5 text-xs group-hover:translate-x-1 transition-transform"></i>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Web Item 3: Laporan Ambulan -->
+                    <!-- Web 3 -->
                     <div class="clean-card overflow-hidden flex flex-col group" data-aos="fade-up" data-aos-delay="300">
-                        <a href="https://script.google.com/macros/s/AKfycbzBj0ZM9QYv_t2ieRG8tXhgnU9MXPb4lwEh-hJkZulmqcZoqCgP6KE1nXEWpvg_m-J2/exec" target="_blank" class="block aspect-[16/10] bg-slate-100 relative overflow-hidden border-b border-slate-200">
-                            <!-- Overlay Hover -->
-                            <div class="absolute inset-0 flex items-center justify-center bg-brand/0 group-hover:bg-brand/40 transition-all z-10">
-                                <span class="opacity-0 group-hover:opacity-100 bg-white text-brand text-xs font-bold px-4 py-2 rounded-full shadow-lg transition-all transform translate-y-2 group-hover:translate-y-0 flex items-center gap-2">
-                                    Visit Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <a href="https://script.google.com/macros/s/AKfycbzBj0ZM9QYv_t2ieRG8tXhgnU9MXPb4lwEh-hJkZulmqcZoqCgP6KE1nXEWpvg_m-J2/exec" target="_blank" class="block aspect-[16/10] bg-slate-100 dark:bg-slate-800 relative overflow-hidden border-b border-slate-200 dark:border-slate-700">
+                            <div class="absolute inset-0 flex items-center justify-center bg-slate-900/0 group-hover:bg-slate-900/40 transition-all z-10">
+                                <span class="opacity-0 group-hover:opacity-100 bg-white text-slate-900 text-xs font-bold px-4 py-2 rounded-full shadow-lg transition-all transform translate-y-2 group-hover:translate-y-0 flex items-center gap-2">
+                                    <span data-i18n="visit_site">Visit Site</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </span>
                             </div>
-                            <!-- Gambar Laporan Ambulan -->
                             <img src="images/foto-laporanambulan.jpg" alt="Laporan Ambulan" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         </a>
                         <div class="p-6 flex-1 flex flex-col">
-                            <h4 class="font-bold text-brand mb-2">Sistem Laporan Driver</h4>
-                            <p class="text-sm text-slate-500 leading-relaxed mb-4 flex-1">Aplikasi pelaporan web untuk manajemen operasional driver ambulan agar pencatatan aktivitas lebih tersentralisasi dan terstruktur.</p>
-                            <a href="https://script.google.com/macros/s/AKfycbzBj0ZM9QYv_t2ieRG8tXhgnU9MXPb4lwEh-hJkZulmqcZoqCgP6KE1nXEWpvg_m-J2/exec" target="_blank" class="text-sm font-semibold text-accent hover:text-brand transition-colors flex items-center w-fit">
+                            <h4 class="font-bold mb-2" data-i18n="web_title_3">Sistem Laporan Driver</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4 flex-1" data-i18n="web_desc_3">Aplikasi pelaporan web untuk manajemen operasional driver ambulan agar pencatatan aktivitas lebih tersentralisasi dan terstruktur.</p>
+                            <a href="https://script.google.com/macros/s/AKfycbzBj0ZM9QYv_t2ieRG8tXhgnU9MXPb4lwEh-hJkZulmqcZoqCgP6KE1nXEWpvg_m-J2/exec" target="_blank" class="text-sm font-semibold text-brand hover:text-slate-500 dark:hover:text-white transition-colors flex items-center w-fit">
                                 Live Preview <i class="fa-solid fa-arrow-right ml-1.5 text-xs group-hover:translate-x-1 transition-transform"></i>
                             </a>
                         </div>
@@ -327,35 +350,35 @@
 
             <!-- KATEGORI: DESAIN GRAFIS -->
             <div class="mb-20">
-                <h3 class="text-xl font-bold text-brand mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-pen-nib text-sm text-slate-400"></i> Desain Grafis & UI/UX
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-pen-nib text-sm text-slate-400"></i> <span data-i18n="cat_design">Desain Grafis & UI/UX</span>
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="clean-card p-4 group" data-aos="fade-up" data-aos-delay="100">
-                        <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden relative mb-4 flex justify-center items-center">
-                            <span class="text-slate-400 text-sm font-semibold tracking-widest">VISUAL KONTEN</span>
+                        <div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden relative mb-4 flex justify-center items-center">
+                            <span class="text-slate-400 text-sm font-semibold tracking-widest" data-i18n="img_ph_1">VISUAL KONTEN</span>
                         </div>
                         <div>
-                            <h4 class="font-bold text-brand">Materi Promosi Estetik</h4>
-                            <p class="text-sm text-slate-500 mt-1">Desain poster kampanye digital dengan estetika modern bergaya dark theme.</p>
+                            <h4 class="font-bold" data-i18n="des_title_1">Materi Promosi Estetik</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1" data-i18n="des_desc_1">Desain poster kampanye digital dengan estetika modern bergaya dark theme.</p>
                         </div>
                     </div>
                     <div class="clean-card p-4 group" data-aos="fade-up" data-aos-delay="200">
-                        <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden relative mb-4 flex justify-center items-center">
-                            <span class="text-slate-400 text-sm font-semibold tracking-widest">UI MOCKUP</span>
+                        <div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden relative mb-4 flex justify-center items-center">
+                            <span class="text-slate-400 text-sm font-semibold tracking-widest" data-i18n="img_ph_2">UI MOCKUP</span>
                         </div>
                         <div>
-                            <h4 class="font-bold text-brand">Desain Antarmuka</h4>
-                            <p class="text-sm text-slate-500 mt-1">Perancangan struktur visual aplikasi berbasis pengalaman pengguna (UI/UX).</p>
+                            <h4 class="font-bold" data-i18n="des_title_2">Desain Antarmuka</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1" data-i18n="des_desc_2">Perancangan struktur visual aplikasi berbasis pengalaman pengguna (UI/UX).</p>
                         </div>
                     </div>
                     <div class="clean-card p-4 group" data-aos="fade-up" data-aos-delay="300">
-                        <div class="aspect-square bg-slate-100 rounded-xl overflow-hidden relative mb-4 flex justify-center items-center">
-                            <span class="text-slate-400 text-sm font-semibold tracking-widest">BRANDING</span>
+                        <div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden relative mb-4 flex justify-center items-center">
+                            <span class="text-slate-400 text-sm font-semibold tracking-widest" data-i18n="img_ph_3">BRANDING</span>
                         </div>
                         <div>
-                            <h4 class="font-bold text-brand">Identitas Merek Digital</h4>
-                            <p class="text-sm text-slate-500 mt-1">Pembuatan logo dan aset grafis konsisten untuk entitas bisnis profesional.</p>
+                            <h4 class="font-bold" data-i18n="des_title_3">Identitas Merek Digital</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1" data-i18n="des_desc_3">Pembuatan logo dan aset grafis konsisten untuk entitas bisnis profesional.</p>
                         </div>
                     </div>
                 </div>
@@ -363,35 +386,35 @@
 
             <!-- KATEGORI: VIDEO EDITING -->
             <div>
-                <h3 class="text-xl font-bold text-brand mb-6 flex items-center gap-2">
-                    <i class="fa-solid fa-video text-sm text-slate-400"></i> Video Editing
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-video text-sm text-slate-400"></i> <span data-i18n="cat_video">Video Editing</span>
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="clean-card overflow-hidden group p-2" data-aos="fade-up" data-aos-delay="100">
-                        <div class="aspect-video bg-brand rounded-xl relative flex items-center justify-center overflow-hidden mb-2">
+                        <div class="aspect-video bg-slate-900 rounded-xl relative flex items-center justify-center overflow-hidden mb-2">
                             <div class="w-10 h-10 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-white"><i class="fa-solid fa-play ml-0.5 text-sm"></i></div>
                         </div>
                         <div class="p-3">
-                            <h4 class="font-bold text-brand mb-1">Konten Visual Dinamis</h4>
-                            <p class="text-sm text-slate-500">Editing dinamis transisi mulus dan sinkronisasi audio untuk sosial media.</p>
+                            <h4 class="font-bold mb-1" data-i18n="vid_title_1">Konten Visual Dinamis</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="vid_desc_1">Editing dinamis transisi mulus dan sinkronisasi audio untuk sosial media.</p>
                         </div>
                     </div>
                     <div class="clean-card overflow-hidden group p-2" data-aos="fade-up" data-aos-delay="200">
-                        <div class="aspect-video bg-brand rounded-xl relative flex items-center justify-center overflow-hidden mb-2">
+                        <div class="aspect-video bg-slate-900 rounded-xl relative flex items-center justify-center overflow-hidden mb-2">
                             <div class="w-10 h-10 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-white"><i class="fa-solid fa-play ml-0.5 text-sm"></i></div>
                         </div>
                         <div class="p-3">
-                            <h4 class="font-bold text-brand mb-1">Komersial Produk</h4>
-                            <p class="text-sm text-slate-500">Cuplikan promosi pendek difokuskan pada nilai jual produk digital.</p>
+                            <h4 class="font-bold mb-1" data-i18n="vid_title_2">Komersial Produk</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="vid_desc_2">Cuplikan promosi pendek difokuskan pada nilai jual produk digital.</p>
                         </div>
                     </div>
                     <div class="clean-card overflow-hidden group p-2" data-aos="fade-up" data-aos-delay="300">
-                        <div class="aspect-video bg-brand rounded-xl relative flex items-center justify-center overflow-hidden mb-2">
+                        <div class="aspect-video bg-slate-900 rounded-xl relative flex items-center justify-center overflow-hidden mb-2">
                             <div class="w-10 h-10 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-white"><i class="fa-solid fa-play ml-0.5 text-sm"></i></div>
                         </div>
                         <div class="p-3">
-                            <h4 class="font-bold text-brand mb-1">Dokumentasi Acara</h4>
-                            <p class="text-sm text-slate-500">Penyusunan klip mentah dengan penyesuaian color grading untuk hasil sinematik.</p>
+                            <h4 class="font-bold mb-1" data-i18n="vid_title_3">Dokumentasi Acara</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="vid_desc_3">Penyusunan klip mentah dengan penyesuaian color grading untuk hasil sinematik.</p>
                         </div>
                     </div>
                 </div>
@@ -400,70 +423,67 @@
         </div>
     </section>
 
-    <!-- Kontak Section Minimalis -->
-    <section id="kontak" class="py-24 px-6 bg-white border-t border-slate-100">
+    <!-- Kontak Section -->
+    <section id="kontak" class="py-24 px-6 bg-white dark:bg-darkBg border-t border-slate-100 dark:border-slate-800 transition-colors">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-extrabold text-brand tracking-tight mb-3">Mari Berkolaborasi.</h2>
-                <p class="text-slate-500">Tertarik mendiskusikan proyek teknologi atau desain? Saya siap membantu.</p>
+                <h2 class="text-3xl font-extrabold tracking-tight mb-3" data-i18n="contact_title">Mari Berkolaborasi.</h2>
+                <p class="text-slate-500 dark:text-slate-400" data-i18n="contact_subtitle">Tertarik mendiskusikan proyek teknologi atau desain? Saya siap membantu.</p>
             </div>
             
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <a href="https://wa.me/6281252980993" target="_blank" class="clean-card p-6 flex flex-col items-center text-center group" data-aos="fade-up" data-aos-delay="100">
                     <div class="text-2xl text-slate-400 group-hover:text-[#25D366] transition-colors mb-3"><i class="fa-brands fa-whatsapp"></i></div>
-                    <h5 class="font-semibold text-brand text-sm mb-1">WhatsApp</h5>
-                    <p class="text-xs text-slate-500">081252980993</p>
+                    <h5 class="font-semibold text-sm mb-1">WhatsApp</h5>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">081252980993</p>
                 </a>
                 
                 <a href="mailto:nauvalputra1@gmail.com" class="clean-card p-6 flex flex-col items-center text-center group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-2xl text-slate-400 group-hover:text-accent transition-colors mb-3"><i class="fa-regular fa-envelope"></i></div>
-                    <h5 class="font-semibold text-brand text-sm mb-1">Email</h5>
-                    <p class="text-xs text-slate-500 truncate w-full">nauvalputra1@gmail.com</p>
+                    <div class="text-2xl text-slate-400 group-hover:text-brand transition-colors mb-3"><i class="fa-regular fa-envelope"></i></div>
+                    <h5 class="font-semibold text-sm mb-1">Email</h5>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 truncate w-full">nauvalputra1@gmail.com</p>
                 </a>
                 
                 <a href="https://www.instagram.com/nauvaldewangga" target="_blank" class="clean-card p-6 flex flex-col items-center text-center group" data-aos="fade-up" data-aos-delay="300">
                     <div class="text-2xl text-slate-400 group-hover:text-pink-600 transition-colors mb-3"><i class="fa-brands fa-instagram"></i></div>
-                    <h5 class="font-semibold text-brand text-sm mb-1">Instagram</h5>
-                    <p class="text-xs text-slate-500">@nauvaldewangga</p>
+                    <h5 class="font-semibold text-sm mb-1">Instagram</h5>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">@nauvaldewangga</p>
                 </a>
                 
                 <a href="https://www.tiktok.com/@envelxv" target="_blank" class="clean-card p-6 flex flex-col items-center text-center group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="text-2xl text-slate-400 group-hover:text-brand transition-colors mb-3"><i class="fa-brands fa-tiktok"></i></div>
-                    <h5 class="font-semibold text-brand text-sm mb-1">TikTok</h5>
-                    <p class="text-xs text-slate-500">@envelxv</p>
+                    <div class="text-2xl text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors mb-3"><i class="fa-brands fa-tiktok"></i></div>
+                    <h5 class="font-semibold text-sm mb-1">TikTok</h5>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">@envelxv</p>
                 </a>
                 
                 <a href="https://www.threads.com/@nauvaldewangga" target="_blank" class="clean-card p-6 flex flex-col items-center text-center group" data-aos="fade-up" data-aos-delay="500">
-                    <div class="text-2xl text-slate-400 group-hover:text-brand transition-colors mb-3"><i class="fa-brands fa-threads"></i></div>
-                    <h5 class="font-semibold text-brand text-sm mb-1">Threads</h5>
-                    <p class="text-xs text-slate-500">@nauvaldewangga</p>
+                    <div class="text-2xl text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors mb-3"><i class="fa-brands fa-threads"></i></div>
+                    <h5 class="font-semibold text-sm mb-1">Threads</h5>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">@nauvaldewangga</p>
                 </a>
                 
                 <a href="https://www.facebook.com/naauvaal" target="_blank" class="clean-card p-6 flex flex-col items-center text-center group" data-aos="fade-up" data-aos-delay="600">
                     <div class="text-2xl text-slate-400 group-hover:text-blue-600 transition-colors mb-3"><i class="fa-brands fa-facebook-f"></i></div>
-                    <h5 class="font-semibold text-brand text-sm mb-1">Facebook</h5>
-                    <p class="text-xs text-slate-500">naauvaal</p>
+                    <h5 class="font-semibold text-sm mb-1">Facebook</h5>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">naauvaal</p>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-10 text-center bg-white border-t border-slate-100">
-        <p class="text-brand font-bold text-sm">© 2026 Nauval Dewangga Putra.</p>
-        <p class="text-slate-500 text-xs mt-1">Dirancang dengan minimalisme modern.</p>
+    <footer class="py-10 text-center bg-white dark:bg-darkBg border-t border-slate-100 dark:border-slate-800 transition-colors">
+        <p class="font-bold text-sm">© 2026 Nauval Dewangga Putra.</p>
+        <p class="text-slate-500 dark:text-slate-400 text-xs mt-1" data-i18n="footer_text">Dirancang dengan minimalisme modern.</p>
     </footer>
 
     <!-- Script Animasi AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            once: true,
-            offset: 50,
-            duration: 800,
-            easing: 'ease-out-cubic',
-        });
+        // Inisialisasi AOS
+        AOS.init({ once: true, offset: 50, duration: 800, easing: 'ease-out-cubic' });
 
+        // Menu Mobile Toggle
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         const links = document.querySelectorAll('.mobile-link');
@@ -485,6 +505,98 @@
                 menu.classList.add('hidden');
                 icon.classList.remove('fa-xmark');
                 icon.classList.add('fa-bars-staggered');
+            });
+        });
+
+        // ------------------ LOGIC DARK MODE ------------------
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if(htmlElement.classList.contains('dark')) {
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun text-yellow-400"></i>';
+            } else {
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            }
+        });
+
+        // ------------------ LOGIC MULTI-BAHASA ------------------
+        const langToggleBtn = document.getElementById('lang-toggle');
+        let currentLang = 'id'; // Default Bahasa
+
+        // Kamus Terjemahan
+        const translations = {
+            id: {
+                nav_home: "Beranda", nav_history: "Riwayat", nav_portfolio: "Portofolio", nav_contact: "Kontak",
+                hero_badge: "Tersedia untuk Kolaborasi", hero_title_1: "Membangun", hero_title_2: "Solusi Digital", hero_title_3: "Yang Efisien.",
+                hero_desc_1: "Halo, saya", hero_desc_2: "Developer & Operator Layanan Digital di Surabaya. Memadukan desain antarmuka yang bersih dengan fondasi sistem yang cerdas.",
+                btn_explore: "Eksplorasi Karya", btn_contact: "Hubungi Saya",
+                history_title: "Rekam Jejak Profesional", history_subtitle: "Perjalanan karir dan fondasi edukasi yang membentuk keahlian saya.",
+                exp_title: "Pengalaman Kerja", exp_date_1: "2024 - Sekarang", exp_role_1: "Founder & Developer", 
+                exp_desc_1: "Mengembangkan dan mengelola ekosistem layanan digital. Berpengalaman dalam merancang panel admin kustom serta mengotomatisasi transaksi menggunakan Telegram Bot.",
+                exp_date_2: "2020 - Sekarang", exp_role_2: "Staff Administrasi", 
+                exp_desc_2: "Mengelola tata usaha, surat menyurat, arsip, serta manajemen database. Menyusun laporan kegiatan administratif dan mengoordinasikan operasional harian.",
+                exp_date_3: "Magang (3 Bulan)", exp_role_3: "Staf Produksi / Kreatif",
+                edu_title: "Edukasi", edu_date_1: "2022 - Sekarang", edu_major_1: "Jurusan Ilmu Komunikasi",
+                edu_desc_1: "Mempelajari praktik komunikasi massa, public relations, strategi media digital, serta komunikasi bisnis organisasi.",
+                edu_major_2: "Jurusan Multimedia", edu_desc_2: "Mempelajari dasar desain grafis, tipografi, editing video/audio, animasi, serta produksi konten digital visual.",
+                port_title: "Eksplorasi Karya", port_subtitle: "Implementasi keahlian teknis dan kreativitas desain ke dalam solusi digital.",
+                cat_web: "Web & System Development", visit_site: "Kunjungi Web",
+                web_title_2: "Layanan KTA Terpadu", web_desc_1: "Platform layanan digital dengan panel admin kustom, pengelolaan katalog produk, dan otomatisasi pesanan berbasis Google Apps Script.",
+                web_desc_2: "Sistem informasi untuk memfasilitasi pendaftaran anggota, cek status keanggotaan, dan pelacakan status cetak Kartu Tanda Anggota.",
+                web_title_3: "Sistem Laporan Driver", web_desc_3: "Aplikasi pelaporan web untuk manajemen operasional driver ambulan agar pencatatan aktivitas lebih tersentralisasi dan terstruktur.",
+                cat_design: "Desain Grafis & UI/UX", img_ph_1: "VISUAL KONTEN", img_ph_2: "UI MOCKUP", img_ph_3: "BRANDING",
+                des_title_1: "Materi Promosi Estetik", des_desc_1: "Desain poster kampanye digital dengan estetika modern bergaya dark theme.",
+                des_title_2: "Desain Antarmuka", des_desc_2: "Perancangan struktur visual aplikasi berbasis pengalaman pengguna (UI/UX).",
+                des_title_3: "Identitas Merek Digital", des_desc_3: "Pembuatan logo dan aset grafis konsisten untuk entitas bisnis profesional.",
+                cat_video: "Video Editing", vid_title_1: "Konten Visual Dinamis", vid_desc_1: "Editing dinamis transisi mulus dan sinkronisasi audio untuk sosial media.",
+                vid_title_2: "Komersial Produk", vid_desc_2: "Cuplikan promosi pendek difokuskan pada nilai jual produk digital.",
+                vid_title_3: "Dokumentasi Acara", vid_desc_3: "Penyusunan klip mentah dengan penyesuaian color grading untuk hasil sinematik.",
+                contact_title: "Mari Berkolaborasi.", contact_subtitle: "Tertarik mendiskusikan proyek teknologi atau desain? Saya siap membantu.",
+                footer_text: "Dirancang dengan minimalisme modern."
+            },
+            en: {
+                nav_home: "Home", nav_history: "Experience", nav_portfolio: "Portfolio", nav_contact: "Contact",
+                hero_badge: "Available for Collaboration", hero_title_1: "Building", hero_title_2: "Efficient Digital", hero_title_3: "Solutions.",
+                hero_desc_1: "Hello, I'm", hero_desc_2: "A Digital Service Operator & Developer based in Surabaya. Blending clean interface design with a smart system foundation.",
+                btn_explore: "Explore Work", btn_contact: "Contact Me",
+                history_title: "Professional Track Record", history_subtitle: "Career journey and educational foundation that shape my expertise.",
+                exp_title: "Work Experience", exp_date_1: "2024 - Present", exp_role_1: "Founder & Developer", 
+                exp_desc_1: "Developing and managing digital service ecosystems. Experienced in designing custom admin panels and automating transactions using Telegram Bots.",
+                exp_date_2: "2020 - Present", exp_role_2: "Administrative Staff", 
+                exp_desc_2: "Managing administration, correspondence, archives, and databases. Compiling administrative reports and coordinating daily operations.",
+                exp_date_3: "Internship (3 Months)", exp_role_3: "Production / Creative Staff",
+                edu_title: "Education", edu_date_1: "2022 - Present", edu_major_1: "Communication Science Major",
+                edu_desc_1: "Studying mass communication practices, public relations, digital media strategies, and organizational business communication.",
+                edu_major_2: "Multimedia Major", edu_desc_2: "Studying the basics of graphic design, typography, video/audio editing, animation, and visual digital content production.",
+                port_title: "Explore Work", port_subtitle: "Implementation of technical skills and creative design into digital solutions.",
+                cat_web: "Web & System Development", visit_site: "Visit Site",
+                web_title_2: "Integrated ID Card Service", web_desc_1: "Digital service platform with a custom admin panel, product catalog management, and order automation based on Google Apps Script.",
+                web_desc_2: "Information system to facilitate member registration, check membership status, and track ID card printing status.",
+                web_title_3: "Driver Report System", web_desc_3: "Web reporting application for ambulance driver operational management to centralize and structure activity recording.",
+                cat_design: "Graphic Design & UI/UX", img_ph_1: "VISUAL CONTENT", img_ph_2: "UI MOCKUP", img_ph_3: "BRANDING",
+                des_title_1: "Aesthetic Promos", des_desc_1: "Digital campaign poster design with modern aesthetics and dark theme styling.",
+                des_title_2: "Interface Design", des_desc_2: "Visual structure design of applications based on user experience (UI/UX).",
+                des_title_3: "Digital Brand Identity", des_desc_3: "Creation of logos and consistent graphic assets for professional business entities.",
+                cat_video: "Video Editing", vid_title_1: "Dynamic Visual Content", vid_desc_1: "Dynamic editing with smooth transitions and audio synchronization for social media.",
+                vid_title_2: "Product Commercials", vid_desc_2: "Short promotional clips focused on the selling points of digital products.",
+                vid_title_3: "Event Documentation", vid_desc_3: "Compiling raw clips with color grading adjustments for cinematic results.",
+                contact_title: "Let's Collaborate.", contact_subtitle: "Interested in discussing tech projects or design? I'm ready to help.",
+                footer_text: "Designed with modern minimalism."
+            }
+        };
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'id' ? 'en' : 'id';
+            langToggleBtn.textContent = currentLang === 'id' ? 'ID / EN' : 'EN / ID';
+            
+            // Mengubah semua teks yang memiliki atribut data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.textContent = translations[currentLang][key];
+                }
             });
         });
     </script>
