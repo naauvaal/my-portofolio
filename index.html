@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Nauval Dewangga Putra</title>
+    <!-- Memanggil Tailwind CSS untuk styling instan -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#00f6ff', /* Warna neon cyan untuk kontras tinggi */
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0f172a; color: #e2e8f0; }
+        .glass-nav { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 30px -10px rgba(0, 246, 255, 0.3); transition: all 0.3s ease; border-color: #00f6ff; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigasi -->
+    <nav class="fixed w-full z-50 glass-nav top-0">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-white tracking-wider">NDP<span class="text-brand">.</span></h1>
+            <div class="space-x-6 text-sm font-medium">
+                <a href="#beranda" class="hover:text-brand transition">Beranda</a>
+                <a href="#riwayat" class="hover:text-brand transition">Riwayat</a>
+                <a href="#karya" class="hover:text-brand transition">Karya</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section / Beranda -->
+    <section id="beranda" class="pt-32 pb-20 px-4 min-h-screen flex items-center">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <p class="text-brand font-semibold mb-2 tracking-wide">HALO, SAYA</p>
+                <!-- UBAH BAGIAN INI: Nama Anda -->
+                <h2 class="text-5xl md:text-7xl font-bold text-white mb-4 leading-tight">Nauval Dewangga Putra</h2>
+                <!-- UBAH BAGIAN INI: Profesi/Deskripsi Singkat -->
+                <p class="text-xl text-gray-400 mb-8 leading-relaxed">
+                    Developer & Operator Layanan Digital yang berbasis di Surabaya. Memadukan teknologi dan desain untuk menciptakan solusi digital yang efisien dan menarik.
+                </p>
+                <a href="#karya" class="bg-brand text-slate-900 px-8 py-3 rounded-full font-bold hover:bg-white transition duration-300">Lihat Karya Saya</a>
+            </div>
+            <div class="hidden md:block">
+                <!-- Tempat untuk Foto Profil (Ganti link src dengan foto Anda) -->
+                <div class="w-72 h-72 rounded-full border-4 border-brand p-2 mx-auto relative">
+                    <div class="w-full h-full rounded-full bg-cardbg flex items-center justify-center overflow-hidden">
+                        <span class="text-gray-500">Foto Profil</span>
+                        <!-- <img src="link-foto-anda.jpg" alt="Profil" class="w-full h-full object-cover"> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Riwayat Hidup & Pekerjaan -->
+    <section id="riwayat" class="py-20 px-4 bg-slate-900/50">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-3xl font-bold text-white mb-12 flex items-center"><span class="w-8 h-1 bg-brand mr-4"></span>Riwayat & Pengalaman</h3>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Riwayat Hidup / Pendidikan -->
+                <div class="bg-cardbg p-8 rounded-2xl border border-slate-700 card-hover">
+                    <h4 class="text-xl font-bold text-brand mb-6">Pendidikan & Riwayat Hidup</h4>
+                    <!-- UBAH BAGIAN INI: Detail Pendidikan -->
+                    <div class="mb-6 border-l-2 border-brand pl-4 ml-2">
+                        <h5 class="text-lg font-semibold text-white">Universitas Terbuka Surabaya</h5>
+                        <p class="text-sm text-gray-400">2022 - 2026</p>
+                        <p class="mt-2 text-gray-300">Fokus pada manajemen sistem dan teknologi. Menyelesaikan seluruh persyaratan akademik dengan baik.</p>
+                    </div>
+                </div>
+
+                <!-- Riwayat Pekerjaan -->
+                <div class="bg-cardbg p-8 rounded-2xl border border-slate-700 card-hover">
+                    <h4 class="text-xl font-bold text-brand mb-6">Pengalaman Pekerjaan</h4>
+                    <!-- UBAH BAGIAN INI: Detail Pekerjaan -->
+                    <div class="mb-6 border-l-2 border-brand pl-4 ml-2">
+                        <h5 class="text-lg font-semibold text-white">Founder & Developer Envel Store</h5>
+                        <p class="text-sm text-gray-400">2024 - Sekarang</p>
+                        <p class="mt-2 text-gray-300">Mengembangkan platform layanan digital, mengelola sistem operasional, dan mengkustomisasi bot otomatis untuk transaksi pelanggan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portofolio (Desain, Video, Website) -->
+    <section id="karya" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-3xl font-bold text-white mb-12 flex items-center"><span class="w-8 h-1 bg-brand mr-4"></span>Portofolio Saya</h3>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Kategori Desain -->
+                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center">
+                        <!-- UBAH BAGIAN INI: Gambar Desain -->
+                        <span class="text-gray-500">Preview Desain Grafis</span>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Desain Grafis</span>
+                        <h4 class="text-xl font-bold text-white mt-2">Materi Promosi & UI</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Poster dengan estetika modern, kreatif, dan kontras tinggi untuk kebutuhan kampanye dan sosial media.</p>
+                    </div>
+                </div>
+
+                <!-- Kategori Video -->
+                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center">
+                        <!-- UBAH BAGIAN INI: Gambar/Link Video -->
+                        <span class="text-gray-500">Preview Video Editing</span>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Video Editing</span>
+                        <h4 class="text-xl font-bold text-white mt-2">Konten Visual Dinamis</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Pengeditan video menggunakan alat profesional untuk menciptakan transisi mulus dan visual yang menarik.</p>
+                    </div>
+                </div>
+
+                <!-- Kategori Website -->
+                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center">
+                        <!-- UBAH BAGIAN INI: Gambar Website -->
+                        <span class="text-gray-500">Preview Web Development</span>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Web Development</span>
+                        <h4 class="text-xl font-bold text-white mt-2">Sistem Integrasi Digital</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Pengembangan panel admin interaktif menggunakan HTML, JS, dan integrasi API untuk operasional bisnis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-cardbg py-8 border-t border-slate-800 text-center">
+        <p class="text-gray-500 text-sm">© 2026 Nauval Dewangga Putra. Dirancang dengan teknologi modern.</p>
+    </footer>
+
+</body>
+</html>
