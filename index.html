@@ -6,15 +6,18 @@
     <title>Portofolio | Nauval Dewangga Putra</title>
     <!-- Memanggil Tailwind CSS untuk styling instan -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memanggil FontAwesome untuk Ikon Sosial Media & Kontak -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: '#2563eb', /* Warna biru modern untuk tema terang */
+                        brand: '#2563eb', /* Warna biru modern */
                         brandlight: '#60a5fa',
-                        lightbg: '#f8fafc', /* Latar belakang abu-abu sangat terang/putih bersih */
-                        cardbg: '#ffffff' /* Latar belakang kartu putih bersih */
+                        lightbg: '#f8fafc', 
+                        cardbg: '#ffffff' 
                     }
                 }
             }
@@ -37,7 +40,6 @@
             box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.15), 0 10px 10px -5px rgba(37, 99, 235, 0.04); 
             border-color: #93c5fd; 
         }
-        /* Efek latar belakang dekoratif */
         .bg-pattern {
             background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
             background-size: 24px 24px;
@@ -50,24 +52,23 @@
     <nav class="fixed w-full z-50 glass-nav top-0">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <h1 class="text-xl font-extrabold text-slate-900 tracking-wider">NDP<span class="text-brand">.</span></h1>
-            <div class="space-x-6 text-sm font-semibold text-slate-600">
+            <div class="space-x-6 text-sm font-semibold text-slate-600 hidden md:block">
                 <a href="#beranda" class="hover:text-brand transition">Beranda</a>
                 <a href="#riwayat" class="hover:text-brand transition">Riwayat</a>
                 <a href="#karya" class="hover:text-brand transition">Karya</a>
+                <a href="#kontak" class="hover:text-brand transition">Kontak</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section / Beranda -->
     <section id="beranda" class="pt-32 pb-20 px-4 min-h-screen flex items-center relative overflow-hidden">
-        <!-- Dekorasi Blur di Latar Belakang -->
         <div class="absolute top-20 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
         <div class="absolute top-40 right-10 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
 
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
             <div>
                 <p class="text-brand font-bold mb-2 tracking-wide uppercase text-sm">Halo, Saya</p>
-                <!-- Teks Gradasi Modern -->
                 <h2 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
                     <span class="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Nauval Dewangga Putra</span>
                 </h2>
@@ -76,13 +77,12 @@
                 </p>
                 <div class="flex gap-4">
                     <a href="#karya" class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 transition duration-300">Lihat Karya Saya</a>
+                    <a href="#kontak" class="bg-white text-slate-800 border border-slate-200 px-8 py-3 rounded-full font-bold hover:bg-slate-50 hover:-translate-y-1 transition duration-300">Hubungi Saya</a>
                 </div>
             </div>
             <div class="hidden md:block">
-                <!-- Foto Profil dengan Frame Putih -->
                 <div class="w-72 h-72 rounded-full p-2 mx-auto relative bg-white shadow-2xl shadow-blue-500/20 border border-slate-100">
                     <div class="w-full h-full rounded-full bg-slate-100 flex items-center justify-center overflow-hidden">
-                        <!-- <span class="text-slate-400 font-medium">Foto Profil</span> -->
                         <img src="images/foto-profil.jpg" alt="Profil Nauval" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -99,22 +99,51 @@
                 <!-- Riwayat Hidup / Pendidikan -->
                 <div class="bg-cardbg p-8 rounded-2xl border border-slate-100 card-hover relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -z-10"></div>
-                    <h4 class="text-xl font-bold text-brand mb-6">Pendidikan & Riwayat Hidup</h4>
-                    <div class="mb-6 border-l-4 border-brand pl-4 ml-2">
-                        <h5 class="text-lg font-bold text-slate-800">Universitas Terbuka Surabaya</h5>
-                        <p class="text-sm text-slate-500 font-medium">2022 - 2026</p>
-                        <p class="mt-2 text-slate-600 leading-relaxed">Fokus pada manajemen sistem dan teknologi. Menyelesaikan seluruh persyaratan akademik dengan baik.</p>
+                    <h4 class="text-xl font-bold text-brand mb-8">Pendidikan</h4>
+                    
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-brand pl-4 ml-2">
+                            <h5 class="text-lg font-bold text-slate-800">Universitas Terbuka Surabaya</h5>
+                            <p class="text-sm text-slate-500 font-medium">2022 - 2026</p>
+                            <p class="mt-1 text-slate-600 text-sm">Fokus pada manajemen sistem dan teknologi. Menyelesaikan seluruh persyaratan akademik dengan baik.</p>
+                        </div>
+                        <div class="border-l-4 border-slate-300 pl-4 ml-2 hover:border-brand transition-colors">
+                            <h5 class="text-lg font-bold text-slate-800">SMK Negeri 12 Surabaya</h5>
+                            <p class="text-sm text-slate-500 font-medium">2016 - 2019</p>
+                            <p class="mt-1 text-slate-600 text-sm">Jurusan Multimedia</p>
+                        </div>
+                        <div class="border-l-4 border-slate-300 pl-4 ml-2 hover:border-brand transition-colors">
+                            <h5 class="text-lg font-bold text-slate-800">SMP Negeri 29 Surabaya</h5>
+                            <p class="text-sm text-slate-500 font-medium">2013 - 2016</p>
+                        </div>
+                        <div class="border-l-4 border-slate-300 pl-4 ml-2 hover:border-brand transition-colors">
+                            <h5 class="text-lg font-bold text-slate-800">SD Negeri Kutisari III Surabaya</h5>
+                            <p class="text-sm text-slate-500 font-medium">2007 - 2013</p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Riwayat Pekerjaan -->
                 <div class="bg-cardbg p-8 rounded-2xl border border-slate-100 card-hover relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-24 h-24 bg-cyan-50 rounded-bl-full -z-10"></div>
-                    <h4 class="text-xl font-bold text-brand mb-6">Pengalaman Pekerjaan</h4>
-                    <div class="mb-6 border-l-4 border-brand pl-4 ml-2">
-                        <h5 class="text-lg font-bold text-slate-800">Founder & Developer Envel Store</h5>
-                        <p class="text-sm text-slate-500 font-medium">2024 - Sekarang</p>
-                        <p class="mt-2 text-slate-600 leading-relaxed">Mengembangkan platform layanan digital, mengelola sistem operasional, dan mengkustomisasi bot otomatis untuk transaksi pelanggan.</p>
+                    <h4 class="text-xl font-bold text-brand mb-8">Pengalaman Pekerjaan</h4>
+                    
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-brand pl-4 ml-2">
+                            <h5 class="text-lg font-bold text-slate-800">Founder & Developer Envel Store</h5>
+                            <p class="text-sm text-slate-500 font-medium">2024 - Sekarang</p>
+                            <p class="mt-1 text-slate-600 text-sm leading-relaxed">Mengembangkan platform layanan digital, mengelola sistem operasional, dan mengkustomisasi bot otomatis untuk transaksi pelanggan.</p>
+                        </div>
+                        <div class="border-l-4 border-slate-300 pl-4 ml-2 hover:border-brand transition-colors">
+                            <h5 class="text-lg font-bold text-slate-800">Tenaga Administrasi</h5>
+                            <p class="text-sm text-brand font-semibold">DPC PDI Perjuangan Kota Surabaya</p>
+                            <p class="text-sm text-slate-500 font-medium">2020 - Sekarang</p>
+                        </div>
+                        <div class="border-l-4 border-slate-300 pl-4 ml-2 hover:border-brand transition-colors">
+                            <h5 class="text-lg font-bold text-slate-800">Magang</h5>
+                            <p class="text-sm text-brand font-semibold">BBSTV Surabaya</p>
+                            <p class="text-sm text-slate-500 font-medium">Durasi: 3 Bulan</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -129,10 +158,9 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Kategori Desain -->
                 <div class="bg-cardbg rounded-2xl overflow-hidden border border-slate-100 card-hover group">
-                    <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden">
-                        <!-- UBAH BAGIAN INI: Gambar Desain -->
+                    <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden relative">
                         <span class="text-slate-400 font-medium group-hover:scale-110 transition duration-500">Preview Desain Grafis</span>
-                        <!-- <img src="images/desain.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"> -->
+                        <!-- <img src="images/desain.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 absolute"> -->
                     </div>
                     <div class="p-6">
                         <span class="inline-block px-3 py-1 bg-blue-50 text-brand text-xs font-bold uppercase tracking-wider rounded-full mb-3">Desain Grafis</span>
@@ -143,10 +171,9 @@
 
                 <!-- Kategori Video -->
                 <div class="bg-cardbg rounded-2xl overflow-hidden border border-slate-100 card-hover group">
-                    <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden">
-                        <!-- UBAH BAGIAN INI: Gambar/Link Video -->
+                    <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden relative">
                         <span class="text-slate-400 font-medium group-hover:scale-110 transition duration-500">Preview Video Editing</span>
-                        <!-- <img src="images/video.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"> -->
+                        <!-- <img src="images/video.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 absolute"> -->
                     </div>
                     <div class="p-6">
                         <span class="inline-block px-3 py-1 bg-cyan-50 text-cyan-600 text-xs font-bold uppercase tracking-wider rounded-full mb-3">Video Editing</span>
@@ -157,10 +184,9 @@
 
                 <!-- Kategori Website -->
                 <div class="bg-cardbg rounded-2xl overflow-hidden border border-slate-100 card-hover group">
-                    <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden">
-                        <!-- UBAH BAGIAN INI: Gambar Website -->
+                    <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden relative">
                         <span class="text-slate-400 font-medium group-hover:scale-110 transition duration-500">Preview Web Development</span>
-                        <!-- <img src="images/web.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500"> -->
+                        <!-- <img src="images/web.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 absolute"> -->
                     </div>
                     <div class="p-6">
                         <span class="inline-block px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-wider rounded-full mb-3">Web Development</span>
@@ -168,6 +194,82 @@
                         <p class="text-slate-600 mt-3 text-sm leading-relaxed">Pengembangan panel admin interaktif menggunakan HTML, JS, dan integrasi API untuk operasional bisnis.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak Section Baru -->
+    <section id="kontak" class="py-20 px-4 bg-slate-100/50 border-t border-slate-200">
+        <div class="max-w-5xl mx-auto text-center">
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-4 inline-flex items-center">Hubungi Saya</h3>
+            <p class="text-slate-500 mb-12 max-w-2xl mx-auto">Tertarik untuk bekerja sama atau memiliki pertanyaan? Jangan ragu untuk menghubungi saya melalui kontak di bawah ini.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/6281252980993" target="_blank" class="flex items-center p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-green-400 transition-all group">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-green-50 text-green-500 group-hover:bg-green-500 group-hover:text-white transition-colors mr-4">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs font-bold text-slate-400 uppercase">WhatsApp</p>
+                        <p class="text-slate-800 font-semibold">081252980993</p>
+                    </div>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:nauvalputra1@gmail.com" class="flex items-center p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-blue-400 transition-all group">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-blue-50 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors mr-4">
+                        <i class="fa-solid fa-envelope text-xl"></i>
+                    </div>
+                    <div class="text-left overflow-hidden">
+                        <p class="text-xs font-bold text-slate-400 uppercase">Email</p>
+                        <p class="text-slate-800 font-semibold truncate">nauvalputra1@gmail.com</p>
+                    </div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/nauvaldewangga" target="_blank" class="flex items-center p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-pink-400 transition-all group">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-pink-50 text-pink-500 group-hover:bg-gradient-to-tr group-hover:from-yellow-400 group-hover:via-pink-500 group-hover:to-purple-500 group-hover:text-white transition-colors mr-4">
+                        <i class="fa-brands fa-instagram text-2xl"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs font-bold text-slate-400 uppercase">Instagram</p>
+                        <p class="text-slate-800 font-semibold">@nauvaldewangga</p>
+                    </div>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@envelxv" target="_blank" class="flex items-center p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-slate-800 transition-all group">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-slate-100 text-slate-700 group-hover:bg-slate-900 group-hover:text-white transition-colors mr-4">
+                        <i class="fa-brands fa-tiktok text-xl"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs font-bold text-slate-400 uppercase">TikTok</p>
+                        <p class="text-slate-800 font-semibold">@envelxv</p>
+                    </div>
+                </a>
+
+                <!-- Threads -->
+                <a href="https://www.threads.com/@nauvaldewangga" target="_blank" class="flex items-center p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-slate-800 transition-all group">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-slate-100 text-slate-700 group-hover:bg-slate-900 group-hover:text-white transition-colors mr-4">
+                        <i class="fa-brands fa-threads text-2xl"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs font-bold text-slate-400 uppercase">Threads</p>
+                        <p class="text-slate-800 font-semibold">@nauvaldewangga</p>
+                    </div>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/naauvaal" target="_blank" class="flex items-center p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-blue-600 transition-all group">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors mr-4">
+                        <i class="fa-brands fa-facebook-f text-xl"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs font-bold text-slate-400 uppercase">Facebook</p>
+                        <p class="text-slate-800 font-semibold">naauvaal</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
