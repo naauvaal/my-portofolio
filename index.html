@@ -4,288 +4,368 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio | Nauval Dewangga Putra</title>
-    <!-- Memanggil Tailwind CSS untuk styling instan -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Memanggil FontAwesome untuk Ikon Sosial Media & Kontak -->
+    
+    <!-- Google Fonts: Plus Jakarta Sans untuk tipografi super modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
                     colors: {
-                        brand: '#2563eb', /* Warna biru modern */
-                        brandlight: '#60a5fa',
-                        lightbg: '#f8fafc', 
-                        cardbg: '#ffffff' 
+                        darkbg: '#050505',
+                        cardbg: 'rgba(255, 255, 255, 0.03)',
+                        cardborder: 'rgba(255, 255, 255, 0.08)',
+                        primary: '#00f6ff',
+                        secondary: '#8b5cf6'
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
                     }
                 }
             }
         }
     </script>
+    
     <style>
-        body { background-color: #f8fafc; color: #334155; }
-        .glass-nav { 
-            background: rgba(255, 255, 255, 0.85); 
-            backdrop-filter: blur(12px); 
-            border-bottom: 1px solid rgba(0,0,0,0.05); 
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        body { 
+            background-color: #050505; 
+            color: #e2e8f0; 
+            overflow-x: hidden;
         }
-        .card-hover {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
+        /* Efek Glassmorphism */
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .card-hover:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.15), 0 10px 10px -5px rgba(37, 99, 235, 0.04); 
-            border-color: #93c5fd; 
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .bg-pattern {
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 24px 24px;
+        .glass-card:hover {
+            border-color: rgba(0, 246, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(0, 246, 255, 0.15);
         }
+        /* Gradient Teks Animasi */
+        .text-gradient {
+            background: linear-gradient(to right, #00f6ff, #8b5cf6, #00f6ff);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+        }
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f6ff; }
     </style>
 </head>
-<body class="antialiased bg-pattern relative">
+<body class="antialiased selection:bg-primary selection:text-black relative">
+
+    <!-- Ornamen Cahaya Background -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob -z-10 pointer-events-none"></div>
+    <div class="fixed top-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000 -z-10 pointer-events-none"></div>
 
     <!-- Navigasi -->
-    <nav class="fixed w-full z-50 glass-nav top-0">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-extrabold text-slate-900 tracking-wider">NDP<span class="text-brand">.</span></h1>
-            <div class="space-x-6 text-sm font-semibold text-slate-600 hidden md:block">
-                <a href="#beranda" class="hover:text-brand transition">Beranda</a>
-                <a href="#riwayat" class="hover:text-brand transition">Riwayat</a>
-                <a href="#karya" class="hover:text-brand transition">Karya</a>
-                <a href="#kontak" class="hover:text-brand transition">Kontak</a>
+    <nav class="fixed w-full z-50 glass top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold text-white tracking-tighter">
+                NDP<span class="text-primary">.</span>
+            </a>
+            
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex space-x-8 text-sm font-semibold text-gray-300">
+                <a href="#beranda" class="hover:text-primary transition-colors">Beranda</a>
+                <a href="#riwayat" class="hover:text-primary transition-colors">Riwayat</a>
+                <a href="#karya" class="hover:text-primary transition-colors">Portofolio</a>
+                <a href="#kontak" class="hover:text-primary transition-colors">Kontak</a>
             </div>
+
+            <!-- Tombol Hamburger (Mobile) -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full glass border-t border-white/10 flex flex-col px-6 py-4 space-y-4 shadow-2xl">
+            <a href="#beranda" class="mobile-link text-gray-300 font-medium hover:text-primary">Beranda</a>
+            <a href="#riwayat" class="mobile-link text-gray-300 font-medium hover:text-primary">Riwayat</a>
+            <a href="#karya" class="mobile-link text-gray-300 font-medium hover:text-primary">Portofolio</a>
+            <a href="#kontak" class="mobile-link text-gray-300 font-medium hover:text-primary">Kontak</a>
         </div>
     </nav>
 
-    <!-- Hero Section / Beranda -->
-    <section id="beranda" class="pt-32 pb-20 px-4 min-h-screen flex items-center relative overflow-hidden">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-        <div class="absolute top-40 right-10 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
-            <div>
-                <p class="text-brand font-bold mb-2 tracking-wide uppercase text-sm">Halo, Saya</p>
-                <h2 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
-                    <span class="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Nauval Dewangga Putra</span>
-                </h2>
-                <p class="text-xl text-slate-600 mb-8 leading-relaxed">
-                    Developer & Operator Layanan Digital yang berbasis di Surabaya. Memadukan teknologi dan desain untuk menciptakan solusi digital yang efisien dan menarik.
+    <!-- Hero Section -->
+    <section id="beranda" class="pt-32 pb-20 px-6 min-h-screen flex items-center justify-center">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1 text-center md:text-left mt-8 md:mt-0">
+                <div class="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-xs font-bold text-gray-400 mb-6 uppercase tracking-widest">
+                    <span class="inline-block w-2 h-2 rounded-full bg-green-400 mr-2 animate-pulse"></span> Available for Work
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+                    Halo, Saya <br/>
+                    <span class="text-gradient">Nauval Dewangga Putra</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+                    Developer & Operator Layanan Digital berbasis di Surabaya. Memadukan estetika desain dan fungsionalitas teknologi untuk menciptakan solusi digital terbaik.
                 </p>
-                <div class="flex gap-4">
-                    <a href="#karya" class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 transition duration-300">Lihat Karya Saya</a>
-                    <a href="#kontak" class="bg-white text-slate-800 border border-slate-200 px-8 py-3 rounded-full font-bold hover:bg-slate-50 hover:-translate-y-1 transition duration-300">Hubungi Saya</a>
+                <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                    <a href="#karya" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-primary text-black font-bold hover:scale-105 hover:shadow-[0_0_20px_rgba(0,246,255,0.4)] transition-all text-center">
+                        Eksplorasi Karya
+                    </a>
+                    <a href="#kontak" class="w-full sm:w-auto px-8 py-3.5 rounded-full border border-white/20 text-white font-bold hover:bg-white hover:text-black transition-all text-center">
+                        Hubungi Saya
+                    </a>
                 </div>
             </div>
-            <div class="hidden md:block">
-                <div class="w-72 h-72 rounded-full p-2 mx-auto relative bg-white shadow-2xl shadow-blue-500/20 border border-slate-100">
-                    <div class="w-full h-full rounded-full bg-slate-100 flex items-center justify-center overflow-hidden">
-                        <img src="images/foto-profil.jpg" alt="Profil Nauval" class="w-full h-full object-cover">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Riwayat Hidup & Pekerjaan -->
-    <section id="riwayat" class="py-20 px-4 bg-slate-100/80 border-y border-slate-200">
-        <div class="max-w-6xl mx-auto">
-            <h3 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center"><span class="w-8 h-1 bg-brand mr-4 rounded-full"></span>Riwayat & Pengalaman</h3>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Riwayat Pendidikan -->
-                <div class="bg-cardbg p-8 rounded-2xl border border-slate-100 card-hover relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -z-10"></div>
-                    <h4 class="text-xl font-bold text-brand mb-8">Pendidikan</h4>
-                    
-                    <div class="space-y-6">
-                        <div class="border-l-4 border-brand pl-4 ml-2">
-                            <h5 class="text-lg font-bold text-slate-800">Universitas Terbuka Surabaya</h5>
-                            <p class="text-sm text-slate-500 font-medium">2022 - Sekarang</p>
-                            <p class="mt-1 text-brand font-semibold text-sm">Jurusan Ilmu Komunikasi</p>
-                            <p class="mt-1 text-slate-600 text-sm">Fokus pada keahlian komunikasi modern, manajemen sistem, dan teknologi.</p>
-                        </div>
-                        <div class="border-l-4 border-slate-300 pl-4 ml-2 hover:border-brand transition-colors">
-                            <h5 class="text-lg font-bold text-slate-800">SMK Negeri 12 Surabaya</h5>
-                            <p class="text-sm text-slate-500 font-medium">2016 - 2019</p>
-                            <p class="mt-1 text-slate-600 text-sm">Jurusan Multimedia</p>
-                        </div>
-                        <div class="border-l-4 border-slate-300 pl-4 ml-2 hover:border-brand transition-colors">
-                            <h5 class="text-lg font-bold text-slate-800">SMP Negeri 29 Surabaya</h5>
-                            <p class="text-sm text-slate-500 font-medium">2013 - 2016</p>
-                        </div>
-                        <div class="border-l-4 border-slate-300 pl-4 ml-2 hover:border-brand transition-colors">
-                            <h5 class="text-lg font-bold text-slate-800">SD Negeri Kutisari III Surabaya</h5>
-                            <p class="text-sm text-slate-500 font-medium">2007 - 2013</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Riwayat Pekerjaan -->
-                <div class="bg-cardbg p-8 rounded-2xl border border-slate-100 card-hover relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-cyan-50 rounded-bl-full -z-10"></div>
-                    <h4 class="text-xl font-bold text-brand mb-8">Pengalaman Pekerjaan</h4>
-                    
-                    <div class="space-y-6">
-                        <div class="border-l-4 border-brand pl-4 ml-2">
-                            <h5 class="text-lg font-bold text-slate-800">Founder & Developer Envel Store</h5>
-                            <p class="text-sm text-slate-500 font-medium">2024 - Sekarang</p>
-                            <p class="mt-1 text-slate-600 text-sm leading-relaxed">Mengembangkan platform layanan digital, mengelola sistem operasional, dan mengkustomisasi bot otomatis untuk transaksi pelanggan.</p>
-                        </div>
-                        <div class="border-l-4 border-slate-300 pl-4 ml-2 hover:border-brand transition-colors">
-                            <h5 class="text-lg font-bold text-slate-800">Tenaga Administrasi</h5>
-                            <p class="text-sm text-brand font-semibold">DPC PDI Perjuangan Kota Surabaya</p>
-                            <p class="text-sm text-slate-500 font-medium">2020 - Sekarang</p>
-                        </div>
-                        <div class="border-l-4 border-slate-300 pl-4 ml-2 hover:border-brand transition-colors">
-                            <h5 class="text-lg font-bold text-slate-800">Magang</h5>
-                            <p class="text-sm text-brand font-semibold">BBSTV Surabaya</p>
-                            <p class="text-sm text-slate-500 font-medium">Durasi: 3 Bulan</p>
-                        </div>
+            <div class="order-1 md:order-2 flex justify-center md:justify-end">
+                <!-- Foto Profil Modern -->
+                <div class="relative w-64 h-64 md:w-80 md:h-80 xl:w-96 xl:h-96">
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary to-secondary animate-spin" style="animation-duration: 10s;"></div>
+                    <div class="absolute inset-1 rounded-full bg-darkbg"></div>
+                    <div class="absolute inset-2 rounded-full overflow-hidden border-2 border-white/10">
+                        <img src="images/foto-profil.jpg" alt="Nauval" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portofolio -->
-    <section id="karya" class="py-20 px-4 relative">
-        <div class="max-w-6xl mx-auto">
-            <h3 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center"><span class="w-8 h-1 bg-brand mr-4 rounded-full"></span>Portofolio Saya</h3>
+    <!-- Riwayat Section (Pendidikan & Pengalaman) -->
+    <section id="riwayat" class="py-24 px-6 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center md:text-left mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Perjalanan Karir & <span class="text-primary">Pendidikan</span></h2>
+            </div>
             
-            <!-- KATEGORI 1: WEB DEVELOPMENT -->
-            <div class="mb-16">
-                <h4 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                    <i class="fa-solid fa-code text-indigo-600 mr-3"></i> Web Development
-                </h4>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Web Item 1 -->
-                    <div class="bg-cardbg rounded-2xl overflow-hidden border border-slate-100 card-hover group">
-                        <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden relative">
-                            <span class="text-slate-400 font-medium group-hover:scale-110 transition duration-500">Preview Web 1</span>
-                            <!-- <img src="images/web-1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 absolute"> -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Pendidikan -->
+                <div class="glass-card p-8 rounded-3xl relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 text-9xl text-white/[0.02]"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-8 flex items-center">
+                        <i class="fa-solid fa-graduation-cap text-primary mr-3"></i> Pendidikan
+                    </h3>
+                    <div class="space-y-8 relative before:absolute before:inset-0 before:ml-2 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/20 before:to-transparent">
+                        <!-- Item Pendidikan -->
+                        <div class="relative pl-8">
+                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-primary bg-darkbg z-10 shadow-[0_0_10px_rgba(0,246,255,0.5)]"></div>
+                            <h4 class="text-lg font-bold text-white">Universitas Terbuka Surabaya</h4>
+                            <span class="text-primary text-sm font-bold tracking-wide">2022 - Sekarang</span>
+                            <p class="text-gray-300 mt-1 font-semibold">Jurusan Ilmu Komunikasi</p>
+                            <p class="text-gray-400 text-sm mt-2 leading-relaxed">Fokus pada keahlian komunikasi modern, manajemen sistem, dan teknologi.</p>
                         </div>
-                        <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-wider rounded-full mb-3">Website</span>
-                            <h4 class="text-xl font-bold text-slate-900">Panel Admin Layanan Digital</h4>
-                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">Sistem operasional interaktif menggunakan HTML, JS, dan integrasi API untuk bisnis.</p>
+                        <div class="relative pl-8 opacity-70 hover:opacity-100 transition-opacity">
+                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-white/20 bg-darkbg z-10"></div>
+                            <h4 class="text-lg font-bold text-white">SMK Negeri 12 Surabaya</h4>
+                            <span class="text-gray-400 text-sm font-medium tracking-wide">2016 - 2019</span>
+                            <p class="text-gray-300 mt-1 font-semibold">Jurusan Multimedia</p>
+                        </div>
+                        <div class="relative pl-8 opacity-70 hover:opacity-100 transition-opacity">
+                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-white/20 bg-darkbg z-10"></div>
+                            <h4 class="text-lg font-bold text-white">SMP Negeri 29 Surabaya</h4>
+                            <span class="text-gray-400 text-sm font-medium tracking-wide">2013 - 2016</span>
+                        </div>
+                        <div class="relative pl-8 opacity-70 hover:opacity-100 transition-opacity">
+                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-white/20 bg-darkbg z-10"></div>
+                            <h4 class="text-lg font-bold text-white">SD Negeri Kutisari III Surabaya</h4>
+                            <span class="text-gray-400 text-sm font-medium tracking-wide">2007 - 2013</span>
                         </div>
                     </div>
-                    <!-- Web Item 2 -->
-                    <div class="bg-cardbg rounded-2xl overflow-hidden border border-slate-100 card-hover group">
-                        <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden relative">
-                            <span class="text-slate-400 font-medium group-hover:scale-110 transition duration-500">Preview Web 2</span>
-                            <!-- <img src="images/web-2.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 absolute"> -->
+                </div>
+
+                <!-- Pengalaman -->
+                <div class="glass-card p-8 rounded-3xl relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 text-9xl text-white/[0.02]"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-8 flex items-center">
+                        <i class="fa-solid fa-briefcase text-secondary mr-3"></i> Pengalaman Kerja
+                    </h3>
+                    <div class="space-y-8 relative before:absolute before:inset-0 before:ml-2 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/20 before:to-transparent">
+                        <!-- Item Pengalaman -->
+                        <div class="relative pl-8">
+                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-secondary bg-darkbg z-10 shadow-[0_0_10px_rgba(139,92,246,0.5)]"></div>
+                            <h4 class="text-lg font-bold text-white">Founder & Developer</h4>
+                            <p class="text-gray-300 mt-1 font-semibold">Envel Store</p>
+                            <span class="text-secondary text-sm font-bold tracking-wide">2024 - Sekarang</span>
+                            <p class="text-gray-400 text-sm mt-2 leading-relaxed">Mengembangkan platform layanan digital, mengelola sistem operasional, dan mengkustomisasi bot otomatis untuk transaksi pelanggan.</p>
                         </div>
-                        <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-wider rounded-full mb-3">Website</span>
-                            <h4 class="text-xl font-bold text-slate-900">Katalog Produk Otomatis</h4>
-                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">Platform showcase produk yang tersinkronisasi secara otomatis dengan database.</p>
+                        <div class="relative pl-8 opacity-70 hover:opacity-100 transition-opacity">
+                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-white/20 bg-darkbg z-10"></div>
+                            <h4 class="text-lg font-bold text-white">Tenaga Administrasi</h4>
+                            <p class="text-gray-300 mt-1 font-semibold">DPC PDI Perjuangan Kota Surabaya</p>
+                            <span class="text-gray-400 text-sm font-medium tracking-wide">2020 - Sekarang</span>
+                        </div>
+                        <div class="relative pl-8 opacity-70 hover:opacity-100 transition-opacity">
+                            <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-white/20 bg-darkbg z-10"></div>
+                            <h4 class="text-lg font-bold text-white">Magang</h4>
+                            <p class="text-gray-300 mt-1 font-semibold">BBSTV Surabaya</p>
+                            <span class="text-gray-400 text-sm font-medium tracking-wide">Durasi: 3 Bulan</span>
                         </div>
                     </div>
-                    <!-- Web Item 3 -->
-                    <div class="bg-cardbg rounded-2xl overflow-hidden border border-slate-100 card-hover group">
-                        <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden relative">
-                            <span class="text-slate-400 font-medium group-hover:scale-110 transition duration-500">Preview Web 3</span>
-                            <!-- <img src="images/web-3.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 absolute"> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portofolio Section -->
+    <section id="karya" class="py-24 px-6 relative border-t border-white/5 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Eksplorasi <span class="text-primary">Karya Saya</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Kumpulan karya pilihan di bidang Web Development, Desain Grafis, dan Video Editing.</p>
+            </div>
+            
+            <!-- KATEGORI: WEB DEVELOPMENT -->
+            <div class="mb-20">
+                <div class="flex items-center mb-8">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mr-4 text-primary text-xl border border-primary/20"><i class="fa-solid fa-code"></i></div>
+                    <h3 class="text-2xl font-bold text-white">Web Development</h3>
+                </div>
+                <!-- Grid Responsif: 1 HP, 2 Tablet, 3 Laptop -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Web 1 -->
+                    <div class="glass-card rounded-2xl overflow-hidden group">
+                        <div class="h-48 bg-white/5 relative overflow-hidden flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkbg to-transparent opacity-50 z-10"></div>
+                            <span class="text-gray-500 font-medium z-20 group-hover:scale-110 transition duration-500">Preview Web 1</span>
+                            <!-- <img src="images/web-1.jpg" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-500"> -->
                         </div>
-                        <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-wider rounded-full mb-3">Website</span>
-                            <h4 class="text-xl font-bold text-slate-900">Dashboard Interaktif</h4>
-                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">Antarmuka manajemen data untuk memonitor lalu lintas transaksi dan log sistem.</p>
+                        <div class="p-6 relative z-20">
+                            <h4 class="text-xl font-bold text-white mb-2">Panel Admin Digital</h4>
+                            <p class="text-sm text-gray-400 line-clamp-2">Sistem operasional interaktif menggunakan HTML, JS, dan integrasi API untuk bisnis.</p>
+                        </div>
+                    </div>
+                    <!-- Web 2 -->
+                    <div class="glass-card rounded-2xl overflow-hidden group">
+                        <div class="h-48 bg-white/5 relative overflow-hidden flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkbg to-transparent opacity-50 z-10"></div>
+                            <span class="text-gray-500 font-medium z-20 group-hover:scale-110 transition duration-500">Preview Web 2</span>
+                        </div>
+                        <div class="p-6 relative z-20">
+                            <h4 class="text-xl font-bold text-white mb-2">Katalog Produk</h4>
+                            <p class="text-sm text-gray-400 line-clamp-2">Platform showcase produk yang tersinkronisasi otomatis dengan database.</p>
+                        </div>
+                    </div>
+                    <!-- Web 3 -->
+                    <div class="glass-card rounded-2xl overflow-hidden group">
+                        <div class="h-48 bg-white/5 relative overflow-hidden flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkbg to-transparent opacity-50 z-10"></div>
+                            <span class="text-gray-500 font-medium z-20 group-hover:scale-110 transition duration-500">Preview Web 3</span>
+                        </div>
+                        <div class="p-6 relative z-20">
+                            <h4 class="text-xl font-bold text-white mb-2">Dashboard Interaktif</h4>
+                            <p class="text-sm text-gray-400 line-clamp-2">Antarmuka manajemen data untuk memonitor log dan lalu lintas transaksi.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- KATEGORI 2: DESAIN GRAFIS -->
-            <div class="mb-16">
-                <h4 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                    <i class="fa-solid fa-pen-nib text-blue-600 mr-3"></i> Desain Grafis
-                </h4>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Desain Item 1 -->
-                    <div class="bg-cardbg rounded-2xl overflow-hidden border border-slate-100 card-hover group">
-                        <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden relative">
-                            <span class="text-slate-400 font-medium group-hover:scale-110 transition duration-500">Preview Desain 1</span>
-                            <!-- <img src="images/desain-1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 absolute"> -->
+            <!-- KATEGORI: DESAIN GRAFIS -->
+            <div class="mb-20">
+                <div class="flex items-center mb-8">
+                    <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mr-4 text-pink-500 text-xl border border-pink-500/20"><i class="fa-solid fa-pen-nib"></i></div>
+                    <h3 class="text-2xl font-bold text-white">Desain Grafis</h3>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Desain 1 -->
+                    <div class="glass-card rounded-2xl overflow-hidden group">
+                        <div class="h-48 bg-white/5 relative overflow-hidden flex items-center justify-center">
+                            <span class="text-gray-500 font-medium z-20 group-hover:scale-110 transition duration-500">Preview Desain 1</span>
                         </div>
                         <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-blue-50 text-brand text-xs font-bold uppercase tracking-wider rounded-full mb-3">Desain Grafis</span>
-                            <h4 class="text-xl font-bold text-slate-900">Materi Promosi Sosial Media</h4>
-                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">Poster dengan estetika modern dan kontras tinggi untuk kampanye digital.</p>
+                            <h4 class="text-xl font-bold text-white mb-2">Promosi Sosmed</h4>
+                            <p class="text-sm text-gray-400 line-clamp-2">Poster dengan estetika modern dan kontras tinggi untuk kampanye digital.</p>
                         </div>
                     </div>
-                    <!-- Desain Item 2 -->
-                    <div class="bg-cardbg rounded-2xl overflow-hidden border border-slate-100 card-hover group">
-                        <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden relative">
-                            <span class="text-slate-400 font-medium group-hover:scale-110 transition duration-500">Preview Desain 2</span>
-                            <!-- <img src="images/desain-2.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 absolute"> -->
+                    <!-- Desain 2 -->
+                    <div class="glass-card rounded-2xl overflow-hidden group">
+                        <div class="h-48 bg-white/5 relative overflow-hidden flex items-center justify-center">
+                            <span class="text-gray-500 font-medium z-20 group-hover:scale-110 transition duration-500">Preview Desain 2</span>
                         </div>
                         <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-blue-50 text-brand text-xs font-bold uppercase tracking-wider rounded-full mb-3">Desain Grafis</span>
-                            <h4 class="text-xl font-bold text-slate-900">User Interface (UI) Mockup</h4>
-                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">Desain antarmuka aplikasi dengan fokus pada pengalaman pengguna (UX) yang rapi.</p>
+                            <h4 class="text-xl font-bold text-white mb-2">Mockup UI/UX</h4>
+                            <p class="text-sm text-gray-400 line-clamp-2">Desain antarmuka aplikasi dengan fokus pada pengalaman pengguna yang rapi.</p>
                         </div>
                     </div>
-                    <!-- Desain Item 3 -->
-                    <div class="bg-cardbg rounded-2xl overflow-hidden border border-slate-100 card-hover group">
-                        <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden relative">
-                            <span class="text-slate-400 font-medium group-hover:scale-110 transition duration-500">Preview Desain 3</span>
-                            <!-- <img src="images/desain-3.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 absolute"> -->
+                    <!-- Desain 3 -->
+                    <div class="glass-card rounded-2xl overflow-hidden group">
+                        <div class="h-48 bg-white/5 relative overflow-hidden flex items-center justify-center">
+                            <span class="text-gray-500 font-medium z-20 group-hover:scale-110 transition duration-500">Preview Desain 3</span>
                         </div>
                         <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-blue-50 text-brand text-xs font-bold uppercase tracking-wider rounded-full mb-3">Desain Grafis</span>
-                            <h4 class="text-xl font-bold text-slate-900">Identitas Visual & Branding</h4>
-                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">Pembuatan logo dan aset visual untuk keperluan identitas bisnis digital.</p>
+                            <h4 class="text-xl font-bold text-white mb-2">Branding Visual</h4>
+                            <p class="text-sm text-gray-400 line-clamp-2">Pembuatan logo dan aset visual untuk identitas bisnis digital.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- KATEGORI 3: VIDEO EDITING -->
+            <!-- KATEGORI: VIDEO EDITING -->
             <div>
-                <h4 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
-                    <i class="fa-solid fa-video text-cyan-600 mr-3"></i> Video Editing
-                </h4>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Video Item 1 -->
-                    <div class="bg-cardbg rounded-2xl overflow-hidden border border-slate-100 card-hover group">
-                        <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden relative">
-                            <span class="text-slate-400 font-medium group-hover:scale-110 transition duration-500">Preview Video 1</span>
-                            <!-- <img src="images/video-1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 absolute"> -->
+                <div class="flex items-center mb-8">
+                    <div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mr-4 text-secondary text-xl border border-secondary/20"><i class="fa-solid fa-video"></i></div>
+                    <h3 class="text-2xl font-bold text-white">Video Editing</h3>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Video 1 -->
+                    <div class="glass-card rounded-2xl overflow-hidden group">
+                        <div class="h-48 bg-white/5 relative overflow-hidden flex items-center justify-center">
+                            <div class="absolute inset-0 flex items-center justify-center z-30 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white"><i class="fa-solid fa-play"></i></div>
+                            </div>
+                            <span class="text-gray-500 font-medium z-20 group-hover:scale-110 transition duration-500">Preview Video 1</span>
                         </div>
                         <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-cyan-50 text-cyan-600 text-xs font-bold uppercase tracking-wider rounded-full mb-3">Video Editing</span>
-                            <h4 class="text-xl font-bold text-slate-900">Konten Visual Dinamis</h4>
-                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">Pengeditan video menggunakan transisi mulus dan efek visual yang menarik.</p>
+                            <h4 class="text-xl font-bold text-white mb-2">Visual Dinamis</h4>
+                            <p class="text-sm text-gray-400 line-clamp-2">Pengeditan video menggunakan transisi mulus dan efek visual menarik.</p>
                         </div>
                     </div>
-                    <!-- Video Item 2 -->
-                    <div class="bg-cardbg rounded-2xl overflow-hidden border border-slate-100 card-hover group">
-                        <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden relative">
-                            <span class="text-slate-400 font-medium group-hover:scale-110 transition duration-500">Preview Video 2</span>
-                            <!-- <img src="images/video-2.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 absolute"> -->
+                    <!-- Video 2 -->
+                    <div class="glass-card rounded-2xl overflow-hidden group">
+                        <div class="h-48 bg-white/5 relative overflow-hidden flex items-center justify-center">
+                            <span class="text-gray-500 font-medium z-20 group-hover:scale-110 transition duration-500">Preview Video 2</span>
                         </div>
                         <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-cyan-50 text-cyan-600 text-xs font-bold uppercase tracking-wider rounded-full mb-3">Video Editing</span>
-                            <h4 class="text-xl font-bold text-slate-900">Video Promosi Produk</h4>
-                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">Pembuatan cuplikan video komersial berdurasi pendek untuk platform media sosial.</p>
+                            <h4 class="text-xl font-bold text-white mb-2">Video Promosi</h4>
+                            <p class="text-sm text-gray-400 line-clamp-2">Cuplikan komersial berdurasi pendek untuk platform media sosial.</p>
                         </div>
                     </div>
-                    <!-- Video Item 3 -->
-                    <div class="bg-cardbg rounded-2xl overflow-hidden border border-slate-100 card-hover group">
-                        <div class="h-56 bg-slate-100 flex items-center justify-center overflow-hidden relative">
-                            <span class="text-slate-400 font-medium group-hover:scale-110 transition duration-500">Preview Video 3</span>
-                            <!-- <img src="images/video-3.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 absolute"> -->
+                    <!-- Video 3 -->
+                    <div class="glass-card rounded-2xl overflow-hidden group">
+                        <div class="h-48 bg-white/5 relative overflow-hidden flex items-center justify-center">
+                            <span class="text-gray-500 font-medium z-20 group-hover:scale-110 transition duration-500">Preview Video 3</span>
                         </div>
                         <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-cyan-50 text-cyan-600 text-xs font-bold uppercase tracking-wider rounded-full mb-3">Video Editing</span>
-                            <h4 class="text-xl font-bold text-slate-900">Dokumentasi Acara</h4>
-                            <p class="text-slate-600 mt-2 text-sm leading-relaxed">Penyusunan klip dan *color grading* untuk menghasilkan video dokumentasi sinematik.</p>
+                            <h4 class="text-xl font-bold text-white mb-2">Dokumentasi Acara</h4>
+                            <p class="text-sm text-gray-400 line-clamp-2">Penyusunan klip dan color grading untuk hasil sinematik.</p>
                         </div>
                     </div>
                 </div>
@@ -295,75 +375,78 @@
     </section>
 
     <!-- Kontak Section -->
-    <section id="kontak" class="py-20 px-4 bg-slate-100/50 border-t border-slate-200">
-        <div class="max-w-5xl mx-auto text-center">
-            <h3 class="text-3xl font-extrabold text-slate-900 mb-4 inline-flex items-center">Hubungi Saya</h3>
-            <p class="text-slate-500 mb-12 max-w-2xl mx-auto">Tertarik untuk bekerja sama atau memiliki pertanyaan? Jangan ragu untuk menghubungi saya melalui kontak di bawah ini.</p>
+    <section id="kontak" class="py-24 px-6 border-t border-white/5 relative overflow-hidden">
+        <div class="absolute bottom-0 right-0 w-full h-96 bg-primary/5 rounded-t-full mix-blend-screen filter blur-[100px] pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Mari <span class="text-gradient">Terhubung</span></h2>
+                <p class="text-gray-400">Punya proyek atau ide kerjasama? Hubungi saya melalui salah satu platform di bawah ini.</p>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 <!-- WhatsApp -->
-                <a href="https://wa.me/6281252980993" target="_blank" class="flex items-center p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-green-400 transition-all group">
-                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-green-50 text-green-500 group-hover:bg-green-500 group-hover:text-white transition-colors mr-4">
+                <a href="https://wa.me/6281252980993" target="_blank" class="glass-card flex items-center p-4 md:p-5 rounded-2xl group hover:border-[#25D366]/50">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-[#25D366]/10 text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-all mr-4">
                         <i class="fa-brands fa-whatsapp text-2xl"></i>
                     </div>
-                    <div class="text-left">
-                        <p class="text-xs font-bold text-slate-400 uppercase">WhatsApp</p>
-                        <p class="text-slate-800 font-semibold">081252980993</p>
+                    <div>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">WhatsApp</p>
+                        <p class="text-white font-medium">081252980993</p>
                     </div>
                 </a>
 
                 <!-- Email -->
-                <a href="mailto:nauvalputra1@gmail.com" class="flex items-center p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-blue-400 transition-all group">
-                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-blue-50 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors mr-4">
+                <a href="mailto:nauvalputra1@gmail.com" class="glass-card flex items-center p-4 md:p-5 rounded-2xl group hover:border-red-400/50">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-red-400/10 text-red-400 group-hover:bg-red-500 group-hover:text-white transition-all mr-4">
                         <i class="fa-solid fa-envelope text-xl"></i>
                     </div>
-                    <div class="text-left overflow-hidden">
-                        <p class="text-xs font-bold text-slate-400 uppercase">Email</p>
-                        <p class="text-slate-800 font-semibold truncate">nauvalputra1@gmail.com</p>
+                    <div class="overflow-hidden">
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Email</p>
+                        <p class="text-white font-medium truncate">nauvalputra1@gmail.com</p>
                     </div>
                 </a>
 
                 <!-- Instagram -->
-                <a href="https://www.instagram.com/nauvaldewangga" target="_blank" class="flex items-center p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-pink-400 transition-all group">
-                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-pink-50 text-pink-500 group-hover:bg-gradient-to-tr group-hover:from-yellow-400 group-hover:via-pink-500 group-hover:to-purple-500 group-hover:text-white transition-colors mr-4">
+                <a href="https://www.instagram.com/nauvaldewangga" target="_blank" class="glass-card flex items-center p-4 md:p-5 rounded-2xl group hover:border-pink-500/50">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-pink-500/10 text-pink-500 group-hover:bg-gradient-to-tr group-hover:from-yellow-400 group-hover:to-pink-600 group-hover:text-white transition-all mr-4">
                         <i class="fa-brands fa-instagram text-2xl"></i>
                     </div>
-                    <div class="text-left">
-                        <p class="text-xs font-bold text-slate-400 uppercase">Instagram</p>
-                        <p class="text-slate-800 font-semibold">@nauvaldewangga</p>
+                    <div>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Instagram</p>
+                        <p class="text-white font-medium">@nauvaldewangga</p>
                     </div>
                 </a>
 
                 <!-- TikTok -->
-                <a href="https://www.tiktok.com/@envelxv" target="_blank" class="flex items-center p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-slate-800 transition-all group">
-                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-slate-100 text-slate-700 group-hover:bg-slate-900 group-hover:text-white transition-colors mr-4">
+                <a href="https://www.tiktok.com/@envelxv" target="_blank" class="glass-card flex items-center p-4 md:p-5 rounded-2xl group hover:border-white/50">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-white/5 text-white group-hover:bg-white group-hover:text-black transition-all mr-4">
                         <i class="fa-brands fa-tiktok text-xl"></i>
                     </div>
-                    <div class="text-left">
-                        <p class="text-xs font-bold text-slate-400 uppercase">TikTok</p>
-                        <p class="text-slate-800 font-semibold">@envelxv</p>
+                    <div>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">TikTok</p>
+                        <p class="text-white font-medium">@envelxv</p>
                     </div>
                 </a>
 
                 <!-- Threads -->
-                <a href="https://www.threads.com/@nauvaldewangga" target="_blank" class="flex items-center p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-slate-800 transition-all group">
-                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-slate-100 text-slate-700 group-hover:bg-slate-900 group-hover:text-white transition-colors mr-4">
+                <a href="https://www.threads.com/@nauvaldewangga" target="_blank" class="glass-card flex items-center p-4 md:p-5 rounded-2xl group hover:border-white/50">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-white/5 text-white group-hover:bg-white group-hover:text-black transition-all mr-4">
                         <i class="fa-brands fa-threads text-2xl"></i>
                     </div>
-                    <div class="text-left">
-                        <p class="text-xs font-bold text-slate-400 uppercase">Threads</p>
-                        <p class="text-slate-800 font-semibold">@nauvaldewangga</p>
+                    <div>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Threads</p>
+                        <p class="text-white font-medium">@nauvaldewangga</p>
                     </div>
                 </a>
 
                 <!-- Facebook -->
-                <a href="https://www.facebook.com/naauvaal" target="_blank" class="flex items-center p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 hover:border-blue-600 transition-all group">
-                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors mr-4">
+                <a href="https://www.facebook.com/naauvaal" target="_blank" class="glass-card flex items-center p-4 md:p-5 rounded-2xl group hover:border-blue-500/50">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-full bg-blue-500/10 text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all mr-4">
                         <i class="fa-brands fa-facebook-f text-xl"></i>
                     </div>
-                    <div class="text-left">
-                        <p class="text-xs font-bold text-slate-400 uppercase">Facebook</p>
-                        <p class="text-slate-800 font-semibold">naauvaal</p>
+                    <div>
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider">Facebook</p>
+                        <p class="text-white font-medium">naauvaal</p>
                     </div>
                 </a>
             </div>
@@ -371,9 +454,27 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white py-8 border-t border-slate-200 text-center">
-        <p class="text-slate-500 text-sm font-medium">© 2026 Nauval Dewangga Putra. Dirancang dengan teknologi modern.</p>
+    <footer class="py-8 border-t border-white/5 text-center">
+        <p class="text-gray-500 text-sm font-medium">© 2026 Nauval Dewangga Putra. Crafted with Code & Coffee.</p>
     </footer>
 
+    <!-- Script Interaktif untuk Menu Mobile -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+
+        // Buka/Tutup menu saat icon hamburger diklik
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Tutup menu otomatis saat salah satu link diklik (agar nyaman di HP)
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
