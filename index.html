@@ -22,8 +22,6 @@
         body { background-color: #0f172a; color: #e2e8f0; }
         .glass-nav { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 30px -10px rgba(0, 246, 255, 0.3); transition: all 0.3s ease; border-color: #00f6ff; }
-        .img-hover { transition: transform 0.5s ease; }
-        .card-hover:hover .img-hover { transform: scale(1.05); }
     </style>
 </head>
 <body class="antialiased">
@@ -45,14 +43,14 @@
                 <p class="text-brand font-semibold mb-2 tracking-wide">HALO, SAYA</p>
                 <h2 class="text-5xl md:text-7xl font-bold text-white mb-4 leading-tight">Nauval Dewangga Putra</h2>
                 <p class="text-xl text-gray-400 mb-8 leading-relaxed">
-                    Graphic Designer & Operator Layanan Digital yang berbasis di Surabaya. Berpengalaman dalam menciptakan visualisasi data, media promosi, dan desain cetak yang efektif.
+                    Developer & Operator Layanan Digital yang berbasis di Surabaya. Memadukan teknologi dan desain untuk menciptakan solusi digital yang efisien dan menarik.
                 </p>
                 <a href="#karya" class="bg-brand text-slate-900 px-8 py-3 rounded-full font-bold hover:bg-white transition duration-300">Lihat Karya Saya</a>
             </div>
             <div class="hidden md:block">
-                <div class="w-72 h-72 rounded-full border-4 border-brand p-2 mx-auto relative group">
+                <div class="w-72 h-72 rounded-full border-4 border-brand p-2 mx-auto relative">
                     <div class="w-full h-full rounded-full bg-cardbg flex items-center justify-center overflow-hidden">
-                        <span class="text-gray-500 group-hover:text-brand transition">Foto Profil</span>
+                        <span class="text-gray-500">Foto Profil</span>
                         </div>
                 </div>
             </div>
@@ -65,20 +63,20 @@
             
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-cardbg p-8 rounded-2xl border border-slate-700 card-hover">
-                    <h4 class="text-xl font-bold text-brand mb-6">Pendidikan</h4>
+                    <h4 class="text-xl font-bold text-brand mb-6">Pendidikan & Riwayat Hidup</h4>
                     <div class="mb-6 border-l-2 border-brand pl-4 ml-2">
                         <h5 class="text-lg font-semibold text-white">Universitas Terbuka Surabaya</h5>
                         <p class="text-sm text-gray-400">2022 - 2026</p>
-                        <p class="mt-2 text-gray-300">Fokus pada manajemen sistem dan teknologi. Mengembangkan keterampilan analitis dan manajerial yang diterapkan dalam pengelolaan data visual.</p>
+                        <p class="mt-2 text-gray-300">Fokus pada manajemen sistem dan teknologi. Menyelesaikan seluruh persyaratan akademik dengan baik.</p>
                     </div>
                 </div>
 
                 <div class="bg-cardbg p-8 rounded-2xl border border-slate-700 card-hover">
-                    <h4 class="text-xl font-bold text-brand mb-6">Pengalaman Profesional</h4>
+                    <h4 class="text-xl font-bold text-brand mb-6">Pengalaman Pekerjaan</h4>
                     <div class="mb-6 border-l-2 border-brand pl-4 ml-2">
                         <h5 class="text-lg font-semibold text-white">Founder & Developer Envel Store</h5>
                         <p class="text-sm text-gray-400">2024 - Sekarang</p>
-                        <p class="mt-2 text-gray-300">Mengelola platform digital dan mendesain berbagai kebutuhan visual promosi, pemetaan data strategis, hingga materi cetak operasional.</p>
+                        <p class="mt-2 text-gray-300">Mengembangkan platform layanan digital, mengelola sistem operasional, dan mengkustomisasi bot otomatis untuk transaksi pelanggan.</p>
                     </div>
                 </div>
             </div>
@@ -87,74 +85,72 @@
 
     <section id="karya" class="py-20 px-4">
         <div class="max-w-6xl mx-auto">
-            <h3 class="text-3xl font-bold text-white mb-4 flex items-center"><span class="w-8 h-1 bg-brand mr-4"></span>Portofolio Karya</h3>
-            <p class="text-gray-400 mb-12">Kumpulan karya desain visual yang mencakup infografis data politik, poster acara, hingga desain layout cetak.</p>
+            <h3 class="text-3xl font-bold text-white mb-12 flex items-center"><span class="w-8 h-1 bg-brand mr-4"></span>Portofolio Desain</h3>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover flex flex-col">
-                    <div class="h-56 bg-slate-800 overflow-hidden relative">
-                        <img src="Peta Suara Gubernur dan Wakil Gubernur PDI Perjuangan 2024.jpg" alt="Peta Suara Gubernur 2024" class="w-full h-full object-cover object-top img-hover">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover">
+                    <div class="h-48 bg-slate-800 overflow-hidden">
+                        <img src="Peta Suara Gubernur dan Wakil Gubernur PDI Perjuangan 2024.jpg" alt="Peta Suara Pilgub" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
                     </div>
-                    <div class="p-6 flex-1">
-                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Infografis & Data</span>
-                        <h4 class="text-xl font-bold text-white mt-2">Pemetaan Suara Pilgub 2024</h4>
-                        <p class="text-gray-400 mt-2 text-sm">Visualisasi data peta sebaran perolehan suara tingkat kecamatan untuk pemilihan Gubernur dan Wakil Gubernur 2024.</p>
-                    </div>
-                </div>
-
-                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover flex flex-col">
-                    <div class="h-56 bg-slate-800 overflow-hidden relative">
-                        <img src="Peta Suara Walikota dan Wakil Walikota PDI Perjuangan 2024.jpg" alt="Peta Suara Walikota 2024" class="w-full h-full object-cover object-top img-hover">
-                    </div>
-                    <div class="p-6 flex-1">
-                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Infografis & Data</span>
-                        <h4 class="text-xl font-bold text-white mt-2">Pemetaan Suara Pilwali 2024</h4>
-                        <p class="text-gray-400 mt-2 text-sm">Desain peta analitik perolehan suara untuk pemilihan Walikota dan Wakil Walikota Surabaya 2024.</p>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Infografis & Pemetaan</span>
+                        <h4 class="text-xl font-bold text-white mt-2">Peta Suara Pilgub 2024</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Visualisasi data infografis hasil perolehan suara Pemilihan Gubernur & Wakil Gubernur di Kota Surabaya.</p>
                     </div>
                 </div>
 
-                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover flex flex-col">
-                    <div class="h-56 bg-slate-800 overflow-hidden relative">
-                        <img src="Peta Suara Pileg PDI Perjuangan 2024.jpg" alt="Peta Suara Pileg 2024" class="w-full h-full object-cover object-top img-hover">
+                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover">
+                    <div class="h-48 bg-slate-800 overflow-hidden">
+                        <img src="Peta Suara Walikota dan Wakil Walikota PDI Perjuangan 2024.jpg" alt="Peta Suara Pilwali" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
                     </div>
-                    <div class="p-6 flex-1">
-                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Infografis & Data</span>
-                        <h4 class="text-xl font-bold text-white mt-2">Pemetaan Suara Pileg 2024</h4>
-                        <p class="text-gray-400 mt-2 text-sm">Infografis peta distribusi suara partai politik tingkat DPRD Kota Surabaya berbasis warna distrik.</p>
-                    </div>
-                </div>
-
-                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover flex flex-col">
-                    <div class="h-56 bg-slate-800 overflow-hidden relative">
-                        <img src="Selamat HUT PDI Perjuangan ke-53 uk 205x305cm.jpg" alt="Poster HUT ke-53" class="w-full h-full object-cover object-top img-hover">
-                    </div>
-                    <div class="p-6 flex-1">
-                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Poster & Publikasi</span>
-                        <h4 class="text-xl font-bold text-white mt-2">Baliho HUT ke-53</h4>
-                        <p class="text-gray-400 mt-2 text-sm">Desain baliho format besar (205x305cm) untuk peringatan Hari Ulang Tahun dengan layout formal dan elegan.</p>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Infografis & Pemetaan</span>
+                        <h4 class="text-xl font-bold text-white mt-2">Peta Suara Pilwali 2024</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Visualisasi data pemetaan sebaran suara Pemilihan Walikota & Wakil Walikota di tingkat kecamatan.</p>
                     </div>
                 </div>
 
-                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover flex flex-col">
-                    <div class="h-56 bg-slate-800 overflow-hidden relative">
-                        <img src="Poster Donor Darah 43.jpg" alt="Poster Donor Darah" class="w-full h-full object-cover object-top img-hover">
+                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover">
+                    <div class="h-48 bg-slate-800 overflow-hidden">
+                        <img src="Peta Suara Pileg PDI Perjuangan 2024.jpg" alt="Peta Suara Pileg" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
                     </div>
-                    <div class="p-6 flex-1">
-                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Poster & Publikasi</span>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Infografis & Pemetaan</span>
+                        <h4 class="text-xl font-bold text-white mt-2">Peta Suara Pileg 2024</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Desain infografis representasi hasil suara Pemilihan Legislatif DPRD Kota Surabaya.</p>
+                    </div>
+                </div>
+
+                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover">
+                    <div class="h-48 bg-slate-800 overflow-hidden">
+                        <img src="Poster Donor Darah 43.jpg" alt="Poster Donor Darah" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" style="object-position: top;">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Publikasi Event</span>
                         <h4 class="text-xl font-bold text-white mt-2">Poster Donor Darah</h4>
-                        <p class="text-gray-400 mt-2 text-sm">Desain poster kampanye sosial donor darah peringatan Bulan Bung Karno, lengkap dengan tipografi modern dan QR code.</p>
+                        <p class="text-gray-400 mt-2 text-sm">Desain poster kampanye publik untuk acara sosial kemanusiaan dengan tata letak informasi yang komunikatif.</p>
                     </div>
                 </div>
 
-                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover flex flex-col">
-                    <div class="h-56 bg-slate-800 overflow-hidden relative">
-                        <img src="Kupon Jalan Sehat DPC 21x8.jpg" alt="Kupon Jalan Sehat" class="w-full h-full object-cover object-center img-hover">
+                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover">
+                    <div class="h-48 bg-slate-800 overflow-hidden">
+                        <img src="Selamat HUT PDI Perjuangan ke-53 uk 205x305cm.jpg" alt="Banner HUT PDI Perjuangan" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" style="object-position: top;">
                     </div>
-                    <div class="p-6 flex-1">
-                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Desain Cetak & Tiket</span>
-                        <h4 class="text-xl font-bold text-white mt-2">Kupon Undian Jalan Sehat</h4>
-                        <p class="text-gray-400 mt-2 text-sm">Desain layout kupon fisik (21x8 cm) dengan garis perforasi (potong) untuk acara jalan sehat dan undian berhadiah.</p>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Desain Baliho / Banner</span>
+                        <h4 class="text-xl font-bold text-white mt-2">Baliho HUT Partai</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Pembuatan desain banner skala besar (205x305cm) untuk perayaan hari ulang tahun organisasi.</p>
+                    </div>
+                </div>
+
+                <div class="bg-cardbg rounded-xl overflow-hidden border border-slate-700 card-hover">
+                    <div class="h-48 bg-slate-800 overflow-hidden">
+                        <img src="Kupon Jalan Sehat DPC 21x8.jpg" alt="Kupon Jalan Sehat" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-brand uppercase tracking-wider">Desain Tiket / Kupon</span>
+                        <h4 class="text-xl font-bold text-white mt-2">Kupon Jalan Sehat</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Desain kupon/tiket acara jalan sehat (ukuran 21x8 cm) yang rapi, fungsional, dan mudah dibaca.</p>
                     </div>
                 </div>
 
